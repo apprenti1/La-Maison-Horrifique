@@ -1,4 +1,4 @@
-import LinkNavbar from "@/component/navbar/linknavebar.tsx";
+import LinkNavbar from "@/component/navbar/Linknavebar";
 
 export default function Navbar() {
     return (

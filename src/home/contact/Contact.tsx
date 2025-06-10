@@ -1,5 +1,5 @@
-import Informations from "./informations/informations";
-import ContactForm from "./contact-form/contactForm";
+import Informations from "./informations/Informations";
+import ContactForm from "./contact-form/ContactForm";
 
 export default function Contact() {
   return (
