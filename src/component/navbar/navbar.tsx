@@ -1,3 +1,4 @@
+import LinkNavbar from "@/component/navbar/linknavebar.tsx";
 
 export default function Navbar() {
     return (
@@ -15,12 +16,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Navigation Links */}
-                    <div className="hidden md:flex space-x-6 text-ghostly-white text-sm sm:text-base">
-                        <a href="#home" ><p className="text-white hover:text-white transition duration-300" >Accueil</p></a>
-                        <a href="#sessions" ><p className="text-white hover:text-white transition duration-300">Sessions</p></a>
-                        <a href="#reservation" ><p className="text-white hover:text-white transition duration-300">Réservation</p></a>
-                        <a href="#contact" ><p className="text-white hover:text-white transition duration-300">Contact</p></a>
-                    </div>
+                    <LinkNavbar></LinkNavbar>
 
                     {/* Mobile Menu Button */}
                     <button
