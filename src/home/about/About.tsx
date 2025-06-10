@@ -1,3 +1,5 @@
+import StatsGrid from "@/home/about/StatsGrid.tsx";
+
 export default function About() {
     return (
         <>
@@ -18,20 +20,7 @@ export default function About() {
                                 Nos décors authentiques, nos effets spéciaux et nos comédiens professionnels
                                 garantissent une expérience inoubliable.
                             </p>
-                            <div className="grid grid-cols-3 gap-6 text-center">
-                                <div>
-                                    <div className="text-3xl font-bold text-white">5</div>
-                                    <div className="text-sm text-gray-400">Ans d'expérience</div>
-                                </div>
-                                <div>
-                                    <div className="text-3xl font-bold text-white">10K+</div>
-                                    <div className="text-sm text-gray-400">Joueurs terrifiés</div>
-                                </div>
-                                <div>
-                                    <div className="text-3xl font-bold text-white">4</div>
-                                    <div className="text-sm text-gray-400">Sessions uniques</div>
-                                </div>
-                            </div>
+                            <StatsGrid></StatsGrid>
                         </div>
                         <div className="relative">
                             <div
