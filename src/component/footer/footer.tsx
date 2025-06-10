@@ -44,8 +44,8 @@ export default function footer() {
 
                         <div>
                             <h4 className="text-lg font-semibold text-white mb-4">Suivez-nous</h4>
-                            <div className="flex space-x-4">
-                                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                            <div className="flex flex-wrap justify-start gap-2  w-full overflow-x-auto box-border">
+                                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
                                     <Button
                                         variant="ghost"
                                         className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
@@ -53,7 +53,7 @@ export default function footer() {
                                         <Instagram className="w-5 h-5 text-white" />
                                     </Button>
                                 </a>
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
                                     <Button
                                         variant="ghost"
                                         className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
@@ -61,7 +61,7 @@ export default function footer() {
                                         <Twitter className="w-5 h-5 text-white" />
                                     </Button>
                                 </a>
-                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
                                     <Button
                                         variant="ghost"
                                         className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
@@ -69,7 +69,7 @@ export default function footer() {
                                         <Facebook className="w-5 h-5 text-white" />
                                     </Button>
                                 </a>
-                                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
                                     <Button
                                         variant="ghost"
                                         className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
