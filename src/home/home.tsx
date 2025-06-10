@@ -1,15 +1,20 @@
-//import React from 'react'
-
+import Navbar from '../component/navbar/navbar'
+import Hero from './hero/hero'
+import Sessions from './sessions/sessions'
+import About from './about/about'
+import Contact from './contact/contact'
+import Footer from '../component/footer/footer'
 import Navbar from "../component/navbar/navbar.tsx";
-import About from "@/home/about/about.tsx";
 
 export default function Home() {
-    return (<div className="w-screen text-ghostly-white font-inter overflow-x-hidden">
-            <Navbar></Navbar>
-            <div className="w-full">
-                <h1>Hello World</h1>
-                <About></About>
-            </div>
-        </div>
-    )
+  return (
+    <>
+        <Navbar />
+        <Hero />
+        <Sessions />
+        <About />
+        <Contact />
+        <Footer />
+    </>
+  )
 }
