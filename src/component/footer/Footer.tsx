@@ -1,5 +1,61 @@
-import {Button} from "@/components/ui/button.tsx";
-import {Facebook, Instagram, Linkedin, Twitter} from "lucide-react";
+import { FaInstagram, FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FooterBlock } from "./FooterBlock";
+import { LinkIcon, Link } from "../core/Link";
+
+export const block1 = [
+  {
+    title: "La Maison Maudite",
+    path: "#",
+  },
+  {
+    title: "Le Laboratoire",
+    path: "#",
+  },
+  {
+    title: "Le Cimetière Hanté",
+    path: "#",
+  },
+  {
+    title: "Le Navire Fantôme",
+    path: "#",
+  },
+]
+
+const block2 = [
+  {
+    title: "Réservation",
+    path: "#",
+  },
+  {
+    title: "Contact",
+    path: "#contact",
+    },
+    {
+    title: "Mentions Légales",
+    path: "#",
+  },
+    {
+        title: "CGV",
+        path: "#",
+    },
+]
+
+const listIcon = [
+  {
+    href: "https://www.instagram.com",
+    icon: (<FaInstagram className="w-5 h-5 text-white" />)
+  },{
+    href: "https://twitter.com",
+    icon: (<FaTwitter className="w-5 h-5 text-white" />)
+  },{
+    href: "https://www.facebook.com",
+    icon: (<FaFacebook className="w-5 h-5 text-white" />)
+  },
+    {
+    href: "https://www.linkedin.com",
+    icon: (<FaLinkedin className="w-5 h-5 text-white" />)
+  }
+]
 
 export default function footer() {
     return (
@@ -19,64 +75,15 @@ export default function footer() {
                             </p>
                         </div>
 
-                        <div>
-                            <h4 className="text-lg font-semibold text-white mb-4">Nos Sessions</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">La Maison Maudite</p></a>
-                                </li>
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">Le Laboratoire</p></a></li>
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">Le Cimetière Hanté</p></a>
-                                </li>
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">Le Navire Fantôme</p></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 className="text-lg font-semibold text-white mb-4"><p className="text-white">Liens Utiles</p></h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">Réservation</p></a></li>
-                                <li><a href="#contact" ><p className="text-gray-400 hover:text-white transition-colors">Contact</p></a></li>
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">Mentions Légales</p></a></li>
-                                <li><a href="#" ><p className="text-gray-400 hover:text-white transition-colors">CGV</p></a></li>
-                            </ul>
-                        </div>
+                        <FooterBlock block={block1}/>
+                        <FooterBlock block={block2} />
 
                         <div>
                             <h4 className="text-lg font-semibold text-white mb-4">Suivez-nous</h4>
-                            <div className="flex flex-wrap justify-start gap-2  w-full overflow-x-auto box-border">
-                                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-                                    <Button
-                                        variant="ghost"
-                                        className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
-                                    >
-                                        <Instagram className="w-5 h-5 text-white" />
-                                    </Button>
-                                </a>
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-                                    <Button
-                                        variant="ghost"
-                                        className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
-                                    >
-                                        <Twitter className="w-5 h-5 text-white" />
-                                    </Button>
-                                </a>
-                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-                                    <Button
-                                        variant="ghost"
-                                        className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
-                                    >
-                                        <Facebook className="w-5 h-5 text-white" />
-                                    </Button>
-                                </a>
-                                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-                                    <Button
-                                        variant="ghost"
-                                        className="bg-gray-800 hover:bg-red-800 p-2 rounded-lg transition-colors duration-300"
-                                    >
-                                        <Linkedin className="w-5 h-5 text-white" />
-                                    </Button>
-                                </a>
+                            <div className="flex flex-wrap justify-start gap-2 w-full overflow-x-auto box-border">
+                                {listIcon.map((item) => (
+                                    <LinkIcon href={item.href} icon={item.icon} />
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -84,8 +91,8 @@ export default function footer() {
                     <div className="border-t border-gray-800 mt-8 pt-8 text-center">
                         <span className="flex justify-center text-sm">
                             © 2024 La Maison Horrifique. Tous droits réservés. |
-                            <a href="#" ><p className="text-gray-400 hover:text-white transition-colors">&nbsp; Mentions Légales &nbsp;</p></a> |
-                            <a href="#" ><p className="text-gray-400 hover:text-white transition-colors">&nbsp; Politique de Confidentialité</p></a>
+                            <Link path="#" text=" Mentions Légales " /> |
+                            <Link path="#" text=" Politique de Confidentialité" />
                         </span>
                     </div>
                 </div>
