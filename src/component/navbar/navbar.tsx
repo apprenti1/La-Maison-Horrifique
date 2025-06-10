@@ -1,4 +1,4 @@
-import LinkNavbar from "@/component/navbar/Linknavebar";
+
 import icon from "@/assets/maison-hantee.png";
 
 export default function Navbar() {
@@ -8,7 +8,7 @@ export default function Navbar() {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo & Title */}
                     <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                        <div className="w-10 h-10 bg-blood-red rounded-lg flex items-center justify-center">
                             <span className="text-2xl"><img src={icon} alt="Logo" /></span>
                         </div>
                         <h2 className="text-2xl font-bold text-white">
@@ -17,7 +17,12 @@ export default function Navbar() {
                     </div>
 
                     {/* Navigation Links */}
-                    <LinkNavbar></LinkNavbar>
+                    <div className="hidden md:flex space-x-6 text-ghostly-white text-sm sm:text-base">
+                        <a href="#home" ><p className="text-white hover:text-white transition duration-300" >Accueil</p></a>
+                        <a href="#sessions" ><p className="text-white hover:text-white transition duration-300">Sessions</p></a>
+                        <a href="#reservation" ><p className="text-white hover:text-white transition duration-300">Réservation</p></a>
+                        <a href="#contact" ><p className="text-white hover:text-white transition duration-300">Contact</p></a>
+                    </div>
 
                     {/* Mobile Menu Button */}
                     <button

@@ -1,7 +1,7 @@
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 
@@ -68,7 +68,7 @@ export default function ContactForm() {
             <Input
               placeholder="Nom"
               {...field}
-              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blood-red focus:outline-none"
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-red-800 focus:outline-none"
             />
             </FormControl>
             <FormMessage className="text-destructive text-sm mt-1" />
@@ -84,7 +84,7 @@ export default function ContactForm() {
             <Input
               placeholder="Email"
               {...field}
-              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blood-red focus:outline-none"
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-red-800 focus:outline-none"
             />
             </FormControl>
             <FormMessage className="text-destructive text-sm mt-1" />
@@ -101,7 +101,7 @@ export default function ContactForm() {
             <Input
             placeholder="Sujet"
             {...field}
-            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blood-red focus:outline-none"
+            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-red-800 focus:outline-none"
             />
           </FormControl>
           <FormMessage className="text-destructive text-sm mt-1" />
@@ -118,19 +118,16 @@ export default function ContactForm() {
             rows={4}
             placeholder="Message"
             {...field}
-            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blood-red focus:outline-none resize-none"
+            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-red-800 focus:outline-none resize-none"
             />
           </FormControl>
           <FormMessage className="text-destructive text-sm mt-1" />
           </FormItem>
         )}
         />
-        <Button
-        type="submit"
-        className="w-full bg-blood-red hover:bg-red-800 py-3 rounded-lg font-semibold transition-colors duration-300 text-gray-800"
-        >
-        Envoyer le message
-        </Button>
+        <button type="submit" className="w-full bg-red-900 hover:bg-red-800 text-white py-3 rounded-lg font-semibold transition-colors duration-300">
+            Envoyer le message
+        </button>
       </form>
       </Form>
     </div>

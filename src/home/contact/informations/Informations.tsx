@@ -42,7 +42,7 @@ export default function Informations() {
       <div className="space-y-8">
         {listInfo.map((info, index) => (
           <div key={index} className="flex items-start space-x-4">
-            <div className="bg-blood-red p-3 rounded-lg">
+            <div className="bg-red-900 p-3 rounded-lg">
               {info.icon}
             </div>
             <div>

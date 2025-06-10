@@ -24,7 +24,7 @@ export default function About() {
                         </div>
                         <div className="relative">
                             <div
-                                className="bg-gradient-to-br from-blood-red/20 to-purple-900/20 rounded-lg p-8 backdrop-blur-sm border border-blood-red/30">
+                                className="bg-gradient-to-br from-red-800/20 to-purple-900/20 rounded-lg p-8 backdrop-blur-sm border border-red-800/30">
                                 <div className="text-center">
                                     <div className="text-8xl mb-4">👥</div>
                                     <h3 className="text-2xl font-bold text-white mb-4">Notre Équipe</h3>

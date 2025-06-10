@@ -8,7 +8,7 @@ export interface InfoProps {
 export default function Info({name, icon, content}: InfoProps) {
   return(
     <div className="flex items-start space-x-4">
-      <div className="bg-blood-red p-3 rounded-lg">
+      <div className="bg-red-900 p-3 rounded-lg">
         {icon}
       </div>
       <div>
