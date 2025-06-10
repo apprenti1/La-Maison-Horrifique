@@ -184,3 +184,36 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+
+  html, body {
+      color: #e8e6e3;
+  }
+
+  #root {
+    width: 100%;
+  }
+
+  .horror-gradient {
+      background: linear-gradient(135deg, #1a0a0a 0%, #2d1b69 50%, #8b0000 100%);
+  }
+  .text-shadow-horror {
+      text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.8);
+  }
+  .floating {
+      animation: floating 3s ease-in-out infinite;
+  }
+  @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+  }
+  .pulse-red {
+      animation: pulse-red 2s infinite;
+  }
+  @keyframes pulse-red {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7); }
+      50% { box-shadow: 0 0 0 20px rgba(139, 0, 0, 0); }
+  }
+  .fog-effect {
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  }
