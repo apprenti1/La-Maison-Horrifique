@@ -1,16 +1,19 @@
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import { Input } from "@/components/ui/input"
-// import { Button } from "@/components/ui/button"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { toast } from "react-toastify"
+import { API_URL } from "@/lib/utils"
 
 const formSchema = z.object({
-  nom: z.string().min(1, { message: "Le nom est requis" }),
+  nom: z.string()
+    .min(1, { message: "Le nom est requis" })
+    .max(50, { message: "Le nom ne doit pas dépasser 50 caractères" })
+    .regex(/^[A-Za-zÀ-ÿ- \s]+$/, { message: "Le nom ne doit contenir que des lettres et des espaces" }),
   email: z.string().email({ message: "Adresse email invalide" }),
   sujet: z.string().min(1, { message: "Le sujet est requis" }),
   message: z.string().min(1, { message: "Le message est requis" }),
-
 })
 
 export default function ContactForm() {
@@ -29,25 +32,31 @@ export default function ContactForm() {
     const nom = values.nom
     const sujet = values.sujet
     const message = values.message
-    if (!email) {
-      form.setError("email", { type: "manual", message: "Veuillez entrer une adresse e-mail." })
-      return
+
+    try {
+      const response = await fetch(`${API_URL}/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nom, email, sujet, message }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du message')
+      }
+
+      const data = await response.json()
+      toast.success(data.message || 'Votre message a bien été envoyé')
+      form.reset()
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message || 'Une erreur est survenue')
+      } else {
+        toast.error('Une erreur inconnue est survenue')
+      }
     }
-    if (!nom) {
-      form.setError("nom", { type: "manual", message: "Veuillez entrer votre nom." })
-      return
-    }
-    if (!sujet) {
-      form.setError("sujet", { type: "manual", message: "Veuillez entrer un sujet." })
-      return
-    }
-    if (!message) {
-      form.setError("message", { type: "manual", message: "Veuillez entrer un message." })
-      return
-    }
-    // Simulate sending email
-    alert(`Email envoyé avec succès !\n\nNom: ${nom}\nEmail: ${email}\nSujet: ${sujet}\nMessage: ${message}`)
-    form.reset()
   }
 
   return (
