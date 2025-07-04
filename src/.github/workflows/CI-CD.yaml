@@ -21,16 +21,20 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test
+        run: npm test -- --watchAll=false
+
       - name: Build project
-        run: npm build
+        run: npm run build
+
+      - name: List build contents (debug)
+        run: ls -la ./build
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./build
           publish_branch: deployment
           commit_message: 'Deploy to GitHub Pages'
           force_orphan: true
