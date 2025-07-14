@@ -1,4 +1,4 @@
-import { Link } from "../core/Link";
+import { Link } from "@/components/core/Link";
 
 const navItems = [
     { id: 'home', label: 'Accueil' },

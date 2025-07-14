@@ -1,3 +1,5 @@
+import { Link } from "@/components/core/Link";
+
 export default function Hero() {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center horror-gradient">
@@ -11,7 +13,7 @@ export default function Hero() {
                 Frissons garantis dans une atmosphère d'épouvante authentique.
             </p>
             <button className="bg-red-900 hover:bg-red-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 pulse-red">
-                Découvrir nos Sessions
+                <Link path="#sessions" text="Découvrir nos sessions"/>
             </button>
         </div>
         
