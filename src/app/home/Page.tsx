@@ -6,7 +6,7 @@ import Contact from './contact/Contact'
 import Footer from '@/components/footer/Footer'
 
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
         <Navbar />

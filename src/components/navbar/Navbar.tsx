@@ -1,14 +1,15 @@
 import LinkNavbar from "@/components/navbar/Linknavebar";
 import icon from "@/assets/maison-hantee.png";
 import { Link } from "@/components/core/Link";
+import { Routes } from "@/components/core/Routes";
 
 export default function Navbar() {
     return (
         <header className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm shadow-md">
-            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+            <nav className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16 w-full">
                     {/* Logo & Title */}
-                    <Link path="/" className="flex items-center space-x-3">
+                    <Link path={Routes.home.toString()} className="flex items-center space-x-3">
                         <div className="w-10 h-10 rounded-lg flex items-center justify-center">
                             <span className="text-2xl"><img src={icon} alt="Logo" /></span>
                         </div>

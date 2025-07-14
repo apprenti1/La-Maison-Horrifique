@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import ContactForm from "@/home/contact/contact-form/ContactForm";
+import ContactForm from "@/app/home/contact/contact-form/ContactForm";
 import { ToastContainer } from "react-toastify";
 
 async function simulateSubmition() {

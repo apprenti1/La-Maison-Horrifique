@@ -1,4 +1,4 @@
-import StatsGrid from "@/home/about/StatsGrid.tsx";
+import StatsGrid from "@/app/home/about/StatsGrid";
 
 export default function About() {
     return (

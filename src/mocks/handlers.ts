@@ -16,6 +16,20 @@ export const handlers = [
     }, { status: 401})
   }),
 
+  http.post(`${API_URL}/verifyToken`, async (req) => {
+    const { token } = await req.request.json() as { token: string };
+
+    if (token === 'fake-jwt-token') {
+      return HttpResponse.json({
+        message: 'Token valide',
+      }, { status: 200 });
+    }
+    return HttpResponse.json({
+      message: 'Token invalide',
+      error: 'Unauthorized',
+    }, { status: 401 });
+  }),
+
   http.post(`${API_URL}/contact`, async (req) => {
     const { nom, email, sujet, message } = await req.request.json() as {
       nom: string;

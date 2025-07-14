@@ -1,5 +1,3 @@
-
-
 export default function StatsGrid() {
     const statsItems = [
         { id: 'experience', value: '5', label: 'Ans d\'expérience' },
