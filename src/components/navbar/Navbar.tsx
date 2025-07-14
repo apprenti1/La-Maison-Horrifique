@@ -1,5 +1,6 @@
-import LinkNavbar from "@/component/navbar/Linknavebar";
+import LinkNavbar from "@/components/navbar/Linknavebar";
 import icon from "@/assets/maison-hantee.png";
+import { Link } from "@/components/core/Link";
 
 export default function Navbar() {
     return (
@@ -7,17 +8,17 @@ export default function Navbar() {
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo & Title */}
-                    <div className="flex items-center space-x-3">
+                    <Link path="/" className="flex items-center space-x-3">
                         <div className="w-10 h-10 rounded-lg flex items-center justify-center">
                             <span className="text-2xl"><img src={icon} alt="Logo" /></span>
                         </div>
                         <h2 className="text-2xl font-bold text-white">
                             La Maison Horrifique
                         </h2>
-                    </div>
+                    </Link>
 
                     {/* Navigation Links */}
-                    <LinkNavbar></LinkNavbar>
+                    <LinkNavbar />
 
                     {/* Mobile Menu Button */}
                     <button
