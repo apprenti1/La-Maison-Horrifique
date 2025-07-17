@@ -83,7 +83,7 @@ export default function footer() {
                             <h4 className="text-lg font-semibold text-white mb-4">Suivez-nous</h4>
                             <div className="flex flex-wrap justify-start gap-2 w-full overflow-x-auto box-border">
                                 {listIcon.map((item) => (
-                                    <LinkIcon href={item.href} icon={item.icon} />
+                                    <LinkIcon key={item.href} href={item.href} icon={item.icon} />
                                 ))}
                             </div>
                         </div>
