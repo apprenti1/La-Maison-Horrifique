@@ -1,61 +1,29 @@
-import { API_URL } from '@/lib/utils'
-import { http, HttpResponse } from 'msw'
+// mocks/handlers.ts - fichier principal
 
+import { authHandlers } from './handlers/authHandlers'
+import { escapeGamesHandlers } from './handlers/escapeGamesHandlers'
+import { employeesHandlers } from './handlers/employeesHandlers'
+import { sessionsHandlers } from './handlers/sessionsHandlers'
+import { statsHandlers } from './handlers/statsHandlers'
+
+// exporter tous les handlers en un seul tableau
 export const handlers = [
-  http.post(`${API_URL}/login`, async (req) => {
-    const { email, password } = await req.request.json() as { email: string; password: string };
-
-    if (email === 'admin@admin.io' && password === 'Azerty1234!') {
-      return HttpResponse.json({
-        token: 'fake-jwt-token',
-      }, { status: 200 })
-    } 
-    return HttpResponse.json({
-      message: 'Identifiants invalides',
-      error: 'Unauthorized',
-    }, { status: 401})
-  }),
-
-  http.post(`${API_URL}/verifyToken`, async (req) => {
-    const { token } = await req.request.json() as { token: string };
-
-    if (token === 'fake-jwt-token') {
-      return HttpResponse.json({
-        message: 'Token valide',
-      }, { status: 200 });
-    }
-    return HttpResponse.json({
-      message: 'Token invalide',
-      error: 'Unauthorized',
-    }, { status: 401 });
-  }),
-
-  http.post(`${API_URL}/contact`, async (req) => {
-    const { nom, email, sujet, message } = await req.request.json() as {
-      nom: string;
-      email: string;
-      sujet: string;
-      message: string;
-    };
-
-    if (
-      !nom ||
-      nom.length > 50 ||
-      !/^[A-Za-zÀ-ÿ -\s]+$/.test(nom) ||
-      !email ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-      !sujet ||
-      !message
-    ) {
-      return HttpResponse.json({
-        message: 'Données invalides',
-        error: 'Bad Request',
-      }, { status: 400 });
-    }
-
-    return HttpResponse.json({
-      message: 'Votre message a bien été envoyé',
-    }, { status: 200 });
-
-  }),
+  ...authHandlers,
+  ...escapeGamesHandlers,
+  ...employeesHandlers,
+  ...sessionsHandlers,
+  ...statsHandlers,
 ]
+
+// exporter aussi les handlers individuellement si besoin
+export {
+  authHandlers,
+  escapeGamesHandlers,
+  employeesHandlers,
+  sessionsHandlers,
+  statsHandlers,
+}
+
+// exporter les types et données si besoin dans d'autres fichiers
+export * from './types/mockApi'
+export * from './data/mockData'
