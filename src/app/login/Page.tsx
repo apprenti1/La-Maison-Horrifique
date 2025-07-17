@@ -8,6 +8,9 @@ import { API_URL } from "@/lib/utils"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Routes } from "@/components/core/Routes"
+import { Link } from "@/components/core/Link"
+import icon from "@/assets/maison-hantee.png";
+
 
 const formSchema = z.object({
   email: z.string().email({ message: "Adresse email invalide" }),
@@ -49,7 +52,7 @@ export default function LoginPage() {
       localStorage.setItem('token', data.token)
       form.reset()
       toast.success("Connexion réussie !")
-      navigate(Routes.home.toString())
+      navigate(Routes.dashboard.toString())
     } catch (error) {
       if (error instanceof Error) {
         form.setError("email", { message: error.message })
@@ -62,8 +65,40 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <>
+    {/* <!-- Background --> */}
+    <div className="fixed inset-0 horror-gradient"></div>
+    <div className="fixed inset-0 fog-effect"></div>
+    
+    {/* <!-- Floating Horror Elements --> */}
+    <div className="fixed top-20 left-10 text-4xl opacity-20 floating" style={{ animationDelay: "0.5s" }}>👻</div>
+    <div className="fixed top-40 right-20 text-3xl opacity-20 floating" style={{ animationDelay: "1s" }}>🕸️</div>
+    <div className="fixed bottom-40 left-20 text-5xl opacity-20 floating" style={{ animationDelay: "1.5s" }}>💀</div>
+    <div className="fixed top-60 left-1/2 text-2xl opacity-15 floating" style={{ animationDelay: "2s" }}>🦇</div>
+    <div className="fixed bottom-20 right-10 text-3xl opacity-20 floating" style={{ animationDelay: "2.5s" }}>⚰️</div>
+
+    {/* <!-- Navigation Back Button --> */}
+    <div className="absolute z-50 p-6 pb-0">
+        <Link path="../" className="inline-flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-300">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            <span>Retour au site</span>
+        </Link>
+    </div>
+    <div className="min-h-screen z-50 flex flex-col items-center justify-center">
+      {/* Logo and Title */}
+      <div className="text-center z-50 mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-red-800 rounded-full mb-4 pulse-red">
+              <span className="text-3xl p-4">
+                <img src={icon} alt="Logo" />
+              </span>
+          </div>
+          <h1 className="text-4xl font-bold text-white mb-2 text-shadow-horror">ADMINISTRATION</h1>
+          <p className="text-gray-300">La Maison Horrifique</p>
+      </div>
+
+      <div className="admin-card rounded-2xl p-8 glow-red">
         <h3 className="text-2xl font-bold text-white mb-6 text-center">Connexion</h3>
         <Form {...form}>
           <form
@@ -75,7 +110,12 @@ export default function LoginPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <label htmlFor="email" className="block text-white mb-1 font-medium">Email</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                      </svg>
+                      Email
+                  </label>
                   <FormControl>
                     <Input
                       id="email"
@@ -93,7 +133,12 @@ export default function LoginPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <label htmlFor="password" className="block text-white mb-1 font-medium">Mot de passe</label>
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+                      <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                      </svg>
+                      Mot de passe
+                  </label>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -121,7 +166,14 @@ export default function LoginPage() {
             </button>
           </form>
         </Form>
+        <div className="mt-8 pt-6 border-t border-gray-700 text-center">
+            <p className="text-xs text-gray-400">
+                Accès réservé aux administrateurs autorisés<br/>
+                <span className="text-red-400">La Maison Horrifique</span> © 2024
+            </p>
+        </div>
       </div>
     </div>
+    </>
   )
 }

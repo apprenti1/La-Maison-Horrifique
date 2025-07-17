@@ -1,6 +1,6 @@
 import Navbar from '@/components/navbar/Navbar'
 import Hero from './hero/Hero'
-import Sessions from './sessions/Sessions'
+import Sessions from './sessions/Index'
 import About from './about/About'
 import Contact from './contact/Contact'
 import Footer from '@/components/footer/Footer'

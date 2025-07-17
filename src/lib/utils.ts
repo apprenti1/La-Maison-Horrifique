@@ -1,7 +1,9 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-export const API_URL = "https://api.example.com"
+export const API_URL = process.env.NODE_ENV === 'development' 
+  ? '/api'
+  : process.env.VITE_API_URL || '/api'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
