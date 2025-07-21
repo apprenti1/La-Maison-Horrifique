@@ -1,8 +1,10 @@
 import type {ReactElement} from "react";
+import type { EscapeGame } from "@/mocks/types/mockApi";
 
 type EscapeGameCardProps = {
+    game: EscapeGame;
     emoji: string;
-    status: 'Actif' | 'Maintenance' | 'Inactif';
+    status: "Actif" | "Maintenance" | "Inactif";
     title: string;
     description: string;
     duration: string;
@@ -18,6 +20,7 @@ type EscapeGameCardProps = {
 };
 
 export default function EscapeGameCard({
+                                           game,
                                            emoji,
                                            status,
                                            title,
@@ -39,7 +42,10 @@ export default function EscapeGameCard({
                 <span className="text-6xl">{emoji}</span>
                 <div className="absolute top-4 right-4">
           <span
-              className={`px-3 py-1 rounded-full text-sm font-medium ${status === "Actif" ? "bg-green-600" : "bg-red-600"}`}>
+              className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  status === "Actif" ? "bg-green-600" : "bg-red-600"
+              }`}
+          >
             {status}
           </span>
                 </div>
@@ -79,11 +85,13 @@ export default function EscapeGameCard({
                     </div>
                     <div>
                         <span className="text-gray-400">Difficulté:</span>
-                        <span className="bg-orange-600 px-2 py-1 rounded text-xs ml-2">{level}</span>
+                        <span className="bg-orange-600 px-2 py-1 rounded text-xs ml-2">
+              {level}
+            </span>
                     </div>
                     <div>
                         <span className="text-gray-400">Prix:</span>
-                        <span className="text-white ml-2">{price}</span>
+                        <span className="text-white ml-2">{price}€</span>
                     </div>
                 </div>
 

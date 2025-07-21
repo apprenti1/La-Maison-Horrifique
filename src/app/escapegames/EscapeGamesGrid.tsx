@@ -31,6 +31,7 @@ export default function EscapeGamesGrid(): ReactElement {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 mt-20">
             {games.map((game) => (
                 <EscapeGameCard
+                    game={game}
                     key={game.id}
                     emoji={game.icon}
                     status={game.statut}
@@ -49,5 +50,5 @@ export default function EscapeGamesGrid(): ReactElement {
                 />
             ))}
         </div>
-    );
+    ) as React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
 }
