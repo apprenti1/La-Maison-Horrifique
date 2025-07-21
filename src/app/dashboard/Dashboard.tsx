@@ -1,7 +1,6 @@
 import { type ReactElement } from "react"
 import StatCard from './StatCard'
 import ManagementCard from './ManagementCard'
-import QuickActions from './QuickActions'
 
 interface StatData {
   title: string
@@ -120,9 +119,6 @@ export default function Dashboard(): ReactElement {
           />
         ))}
       </div>
-
-      {/* Quick Actions */}
-      <QuickActions />
     </div>
   )
 }
