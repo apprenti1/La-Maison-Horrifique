@@ -166,8 +166,8 @@ export const statsHandlers = [
         
         return {
           employeeId: emp.id,
-          nom: emp.nom,
-          prenom: emp.prenom,
+          nom: emp.name,
+          prenom: emp.surname,
           totalSessions: empSessions.length,
           completedSessions: completedSessions.length,
           revenue: totalRevenue,

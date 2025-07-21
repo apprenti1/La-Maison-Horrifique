@@ -1,12 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./app/home/Page";
 import LoginPage from "./app/login/Page";
-import { PrivateRoute, PublicRoute } from "./components/core/Routes";
+import {PrivateRoute, PublicRoute} from "./components/core/Routes";
 import DashboardPage from "./app/dashboard/Page";
 import LogoutPage from "./app/logout/Page";
-import {Routes as AppRoutes} from "./components/core/Routes";
-import { Navigate } from "react-router-dom";
 import SessionsManagementPage from "./app/sessions/SessionsManagementPage";
+import {Navigate} from "react-router-dom";
+import EscapeGamesPage from "@/app/escapegames/Page.tsx";
+import EscapeGamesCreatePage from "@/app/escapegames/create/Page.tsx";
+import {Routes as AppRoutes} from "./lib/utils";
+import LegalNoticesPage from "./app/legal-notices/page";
+import CreateEmployeePage from "./app/dashboard/create-employee/page";
 
 export default function App() {
   return (
@@ -36,11 +40,19 @@ export default function App() {
         }
       />
       <Route
+        path={AppRoutes.dashboard.createEmployees.toString()}
+        element={
+          <PrivateRoute>
+            <CreateEmployeePage />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path={AppRoutes.escapeGames.toString()}
         element={
           <PrivateRoute>
             {/* Placeholder for Escape Games Page */}
-            <div>Escape Games Page</div>
+            <EscapeGamesPage></EscapeGamesPage>
           </PrivateRoute>
         }
       />
@@ -58,7 +70,7 @@ export default function App() {
         element={
           <PrivateRoute>
             {/* Placeholder for Create Escape Game Page */}
-            <div>Create Escape Game Page</div>
+            <EscapeGamesCreatePage></EscapeGamesCreatePage>
           </PrivateRoute>
         }
       />
@@ -96,6 +108,8 @@ export default function App() {
             <SessionsManagementPage />
           </PrivateRoute>
         }
+        path={AppRoutes.legalNotices.toString()}
+        element={<LegalNoticesPage />}
       />
       <Route
         path="*"

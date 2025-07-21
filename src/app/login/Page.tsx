@@ -7,7 +7,7 @@ import { toast } from "react-toastify"
 import { API_URL } from "@/lib/utils"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Routes } from "@/components/core/Routes"
+import { Routes } from "@/lib/utils"
 import { Link } from "@/components/core/Link"
 import icon from "@/assets/maison-hantee.png";
 

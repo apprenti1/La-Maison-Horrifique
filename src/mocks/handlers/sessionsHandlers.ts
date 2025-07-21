@@ -83,7 +83,7 @@ export const sessionsHandlers = [
 
     if (!newSession.escapeGameId || !newSession.employeeId || !newSession.dateHeure) {
       return HttpResponse.json({
-        message: 'Escape game, employé et date/heure sont requis',
+        message: 'Escape create, employé et date/heure sont requis',
         error: 'Bad Request'
       }, { status: 400 })
     }
@@ -92,13 +92,13 @@ export const sessionsHandlers = [
     const escapeGame = escapeGames.find(eg => eg.id === newSession.escapeGameId)
     if (!escapeGame) {
       return HttpResponse.json({
-        message: 'Escape game non trouvé',
+        message: 'Escape create non trouvé',
         error: 'Bad Request'
       }, { status: 400 })
     }
     if (escapeGame.statut !== 'Actif') {
       return HttpResponse.json({
-        message: 'Escape game non disponible',
+        message: 'Escape create non disponible',
         error: 'Bad Request'
       }, { status: 400 })
     }

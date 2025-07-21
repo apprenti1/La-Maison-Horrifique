@@ -2,7 +2,7 @@
 
 import type { EscapeGame, Employee, Session } from '../types/mockApi'
 
-export let escapeGames: EscapeGame[] = [
+export const escapeGames: EscapeGame[] = [
   {
     id: '1',
     color: "#eba707",
@@ -95,11 +95,12 @@ export let escapeGames: EscapeGame[] = [
   }
 ]
 
-export let employees: Employee[] = [
+export const employees: Employee[] = [
   {
     id: '1',
-    nom: 'Dubois',
-    prenom: 'Marie',
+    name: 'Dubois',
+    surname: 'Marie',
+    password: 'password123',
     email: 'marie.dubois@maisonhorreur.com',
     telephone: '06.12.34.56.78',
     poste: 'Game Master',
@@ -111,8 +112,9 @@ export let employees: Employee[] = [
   },
   {
     id: '2',
-    nom: 'Martin',
-    prenom: 'Pierre',
+    name: 'Martin',
+    surname: 'Pierre',
+    password: 'securePass456',
     email: 'pierre.martin@maisonhorreur.com',
     telephone: '06.23.45.67.89',
     poste: 'Game Master',
@@ -124,8 +126,9 @@ export let employees: Employee[] = [
   },
   {
     id: '3',
-    nom: 'Leroy',
-    prenom: 'Sophie',
+    name: 'Leroy',
+    surname: 'Sophie',
+    password: 'welcome789',
     email: 'sophie.leroy@maisonhorreur.com',
     telephone: '06.34.56.78.90',
     poste: 'Accueil',
@@ -137,8 +140,9 @@ export let employees: Employee[] = [
   },
   {
     id: '4',
-    nom: 'Moreau',
-    prenom: 'Jean',
+    name: 'Moreau',
+    surname: 'Jean',
+    password: 'managerPass123',
     email: 'jean.moreau@maisonhorreur.com',
     telephone: '06.45.67.89.01',
     poste: 'Manager',
@@ -150,8 +154,9 @@ export let employees: Employee[] = [
   },
   {
     id: '5',
-    nom: 'Durand',
-    prenom: 'Lucie',
+    name: 'Durand',
+    surname: 'Lucie',
+    password: 'gameMaster2250',
     email: 'lucie.durand@maisonhorreur.com',
     telephone: '06.56.78.90.12',
     poste: 'Game Master',
@@ -163,8 +168,9 @@ export let employees: Employee[] = [
   },
   {
     id: '6',
-    nom: 'Bernard',
-    prenom: 'Thomas',
+    name: 'Bernard',
+    surname: 'Thomas',
+    password: 'tech2400',
     email: 'thomas.bernard@maisonhorreur.com',
     telephone: '06.67.89.01.23',
     poste: 'Technicien',
@@ -176,8 +182,9 @@ export let employees: Employee[] = [
   },
   {
     id: '7',
-    nom: 'Petit',
-    prenom: 'Camille',
+    name: 'Petit',
+    surname: 'Camille',
+    password: 'formation2100',
     email: 'camille.petit@maisonhorreur.com',
     telephone: '06.78.90.12.34',
     poste: 'Game Master',
@@ -189,8 +196,9 @@ export let employees: Employee[] = [
   },
   {
     id: '8',
-    nom: 'Garcia',
-    prenom: 'Nicolas',
+    name: 'Garcia',
+    surname: 'Nicolas',
+    password: 'conge2200',
     email: 'nicolas.garcia@maisonhorreur.com',
     telephone: '06.89.01.23.45',
     poste: 'Game Master',
@@ -202,14 +210,14 @@ export let employees: Employee[] = [
   }
 ]
 
-export let sessions: Session[] = [
+export const sessions: Session[] = [
   {
     id: '1',
     escapeGameId: '1',
     employeeId: '1',
     clientInfo: {
-      nom: 'Dupont',
-      prenom: 'Michel',
+      name: 'Dupont',
+      surname: 'Michel',
       email: 'michel.dupont@email.com',
       telephone: '06.11.22.33.44',
       nombrePersonnes: 4
@@ -225,8 +233,8 @@ export let sessions: Session[] = [
     escapeGameId: '2',
     employeeId: '2',
     clientInfo: {
-      nom: 'Lambert',
-      prenom: 'Sarah',
+      name: 'Lambert',
+      surname: 'Sarah',
       email: 'sarah.lambert@email.com',
       telephone: '06.22.33.44.55',
       nombrePersonnes: 3
@@ -242,8 +250,8 @@ export let sessions: Session[] = [
     escapeGameId: '3',
     employeeId: '5',
     clientInfo: {
-      nom: 'Rousseau',
-      prenom: 'David',
+      name: 'Rousseau',
+      surname: 'David',
       email: 'david.rousseau@email.com',
       telephone: '06.33.44.55.66',
       nombrePersonnes: 6
@@ -259,8 +267,8 @@ export let sessions: Session[] = [
     escapeGameId: '1',
     employeeId: '1',
     clientInfo: {
-      nom: 'Moreau',
-      prenom: 'Julie',
+      name: 'Moreau',
+      surname: 'Julie',
       email: 'julie.moreau@email.com',
       telephone: '06.44.55.66.77',
       nombrePersonnes: 2
@@ -278,8 +286,8 @@ export let sessions: Session[] = [
     escapeGameId: '2',
     employeeId: '2',
     clientInfo: {
-      nom: 'Vincent',
-      prenom: 'Laura',
+      name: 'Vincent',
+      surname: 'Laura',
       email: 'laura.vincent@email.com',
       telephone: '06.55.66.77.88',
       nombrePersonnes: 4
@@ -296,8 +304,8 @@ export let sessions: Session[] = [
     escapeGameId: '3',
     employeeId: '5',
     clientInfo: {
-      nom: 'Simon',
-      prenom: 'Marc',
+      name: 'Simon',
+      surname: 'Marc',
       email: 'marc.simon@email.com',
       telephone: '06.66.77.88.99',
       nombrePersonnes: 5

@@ -1,4 +1,4 @@
-import { Routes } from "@/components/core/Routes";
+import { Routes } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
