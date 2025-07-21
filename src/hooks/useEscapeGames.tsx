@@ -14,6 +14,7 @@ interface UseEscapeGamesReturn {
   error: string | null
   refetch: () => Promise<void>
   isEmpty: boolean
+  createEscapeGame: (escapeGame: Omit<EscapeGame, 'id'>) => Promise<void>
 }
 
 export function useEscapeGames(options: UseEscapeGamesOptions = {}): UseEscapeGamesReturn {
@@ -54,6 +55,30 @@ export function useEscapeGames(options: UseEscapeGamesOptions = {}): UseEscapeGa
     }
   }
 
+  const createEscapeGame = async (escapeGame: Omit<EscapeGame, 'id'>) => {
+    try {
+      const response = await fetch('/api/escape-games', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(escapeGame)
+      })
+      
+      if (!response.ok) {
+        throw new Error(`Erreur ${response.status}: ${response.statusText}`)
+      }
+      
+      const data: EscapeGame = await response.json()
+      
+      setEscapeGames([...escapeGames, data])
+      
+    } catch (err) {
+      console.error('Erreur lors de la création d\'un escape game:', err)
+      setError(err instanceof Error ? err.message : 'Erreur inconnue')
+    }
+  }
+
   useEffect(() => {
     fetchEscapeGames()
   }, [onlyActive])
@@ -70,6 +95,7 @@ export function useEscapeGames(options: UseEscapeGamesOptions = {}): UseEscapeGa
     loading,
     error,
     refetch: fetchEscapeGames,
-    isEmpty: escapeGames.length === 0
+    isEmpty: escapeGames.length === 0,
+    createEscapeGame
   }
 }
