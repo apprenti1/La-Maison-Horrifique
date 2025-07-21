@@ -9,7 +9,7 @@ export default function NavBarEscapeGames() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center py-4">
                         <div className="flex items-center space-x-3">
-                            <Link path="admin-dashboard.html"
+                            <Link path="/dashboard"
                                className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-300">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

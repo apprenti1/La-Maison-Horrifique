@@ -28,7 +28,7 @@ export default function EscapeGamesGrid(): ReactElement {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 mt-20">
             {games.map((game) => (
                 <EscapeGameCard
                     key={game.id}

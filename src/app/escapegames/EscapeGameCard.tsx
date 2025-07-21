@@ -34,7 +34,7 @@ export default function EscapeGameCard({
                                            onToggleStatus,
                                        }: EscapeGameCardProps): ReactElement {
     return (
-        <div className="game-card rounded-xl overflow-hidden bg-zinc-900">
+        <div className="game-card rounded-xl overflow-hidden bg-zinc-900 z-50">
             <div className="relative h-48 bg-gradient-to-br from-blue-900/80 to-black flex items-center justify-center">
                 <span className="text-6xl">{emoji}</span>
                 <div className="absolute top-4 right-4">

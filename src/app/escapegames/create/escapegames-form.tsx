@@ -7,6 +7,7 @@ import {Link} from "@/components/core/Link";
 import {Routes as AppRoutes} from "@/components/core/Routes.tsx";
 import {useEscapeGames} from '@/hooks/useEscapeGames'
 import type {EscapeGame} from "@/mocks/types/mockApi.ts";
+import { useNavigate } from "react-router-dom";
 
 type Status = 'Actif' | 'Maintenance' | 'Inactif';
 
@@ -23,6 +24,8 @@ type FormData = {
 };
 
 const EscapegamesForm: React.FC = () => {
+
+    const navigate = useNavigate();
     const {createEscapeGame} = useEscapeGames()
     const [form, setForm] = useState<FormData>({
         name: '',
@@ -76,7 +79,7 @@ const EscapegamesForm: React.FC = () => {
 
         try {
             await createEscapeGame(escapeGameToCreate);
-            window.location.href = AppRoutes.escapeGames.toString()
+            navigate(AppRoutes.escapeGames.toString());
         } catch (error) {
             console.error('Erreur création escape game:', error);
         }
