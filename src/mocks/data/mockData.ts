@@ -105,7 +105,6 @@ export const employees: Employee[] = [
     telephone: '06.12.34.56.78',
     poste: 'Game Master',
     statut: 'Actif',
-    salaire: 2200,
     dateEmbauche: '2023-01-15',
     createdAt: '2023-01-15T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -119,7 +118,6 @@ export const employees: Employee[] = [
     telephone: '06.23.45.67.89',
     poste: 'Game Master',
     statut: 'Actif',
-    salaire: 2300,
     dateEmbauche: '2023-03-20',
     createdAt: '2023-03-20T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -133,7 +131,6 @@ export const employees: Employee[] = [
     telephone: '06.34.56.78.90',
     poste: 'Accueil',
     statut: 'Actif',
-    salaire: 2000,
     dateEmbauche: '2023-02-10',
     createdAt: '2023-02-10T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -147,7 +144,6 @@ export const employees: Employee[] = [
     telephone: '06.45.67.89.01',
     poste: 'Manager',
     statut: 'Actif',
-    salaire: 3500,
     dateEmbauche: '2022-11-01',
     createdAt: '2022-11-01T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -161,7 +157,6 @@ export const employees: Employee[] = [
     telephone: '06.56.78.90.12',
     poste: 'Game Master',
     statut: 'Actif',
-    salaire: 2250,
     dateEmbauche: '2023-05-15',
     createdAt: '2023-05-15T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -175,7 +170,6 @@ export const employees: Employee[] = [
     telephone: '06.67.89.01.23',
     poste: 'Technicien',
     statut: 'Actif',
-    salaire: 2400,
     dateEmbauche: '2023-04-01',
     createdAt: '2023-04-01T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -189,7 +183,6 @@ export const employees: Employee[] = [
     telephone: '06.78.90.12.34',
     poste: 'Game Master',
     statut: 'Formation',
-    salaire: 2100,
     dateEmbauche: '2024-06-01',
     createdAt: '2024-06-01T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'
@@ -203,7 +196,6 @@ export const employees: Employee[] = [
     telephone: '06.89.01.23.45',
     poste: 'Game Master',
     statut: 'Congé',
-    salaire: 2200,
     dateEmbauche: '2023-07-10',
     createdAt: '2023-07-10T09:00:00Z',
     updatedAt: '2024-07-15T09:00:00Z'

@@ -19,7 +19,6 @@ const formSchema = z.object({
   telephone: z.string().regex(/^\+?[0-9]{10,15}$/, { message: "Numéro de téléphone invalide" }),
   poste: z.enum(['Game Master', 'Accueil', 'Manager', 'Technicien'], { message: "Poste invalide" }),
   statut: z.enum(['Actif', 'Inactif', 'Congé', 'Formation'], { message: "Statut invalide" }),
-  salaire: z.number().min(0, { message: "Le salaire doit être un nombre positif" }),
   dateEmbauche: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, { message: "Date d'embauche invalide (format attendu : YYYY-MM-DD)" }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Les mots de passe ne correspondent pas",
@@ -43,7 +42,6 @@ export default function CreateEmployeePage() {
       telephone: "",
       poste: "Game Master",
       statut: "Actif",
-      salaire: 0,
       dateEmbauche: new Date().toISOString().split('T')[0], // Format YYYY-MM-DD
     },
   })
@@ -64,10 +62,10 @@ export default function CreateEmployeePage() {
         throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
       }
 
-      const data = await response.json()
-      localStorage.setItem('token', data.token)
+      await response.json()
+
       form.reset()
-      toast.success("Connexion réussie !")
+      toast.success("Employé créé avec succès !")
       navigate(Routes.dashboard.toString())
     } catch (error) {
       if (error instanceof Error) {
@@ -79,7 +77,6 @@ export default function CreateEmployeePage() {
         form.setError("telephone", { message: error.message })
         form.setError("poste", { message: error.message })
         form.setError("statut", { message: error.message })
-        form.setError("salaire", { message: error.message })
         form.setError("dateEmbauche", { message: error.message })
       } else {
         form.setError("email", { message: 'Une erreur inconnue est survenue' })
@@ -325,27 +322,6 @@ export default function CreateEmployeePage() {
         />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          control={form.control}
-          name="salaire"
-          render={({ field }) => (
-            <FormItem>
-          <label htmlFor="salaire" className="block text-sm font-medium text-gray-300 mb-2">
-            Salaire
-          </label>
-          <FormControl>
-            <Input
-              id="salaire"
-              type="number"
-              placeholder="Salaire"
-              {...field}
-              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-red-800 focus:outline-none"
-            />
-          </FormControl>
-          <FormMessage className="text-destructive text-sm mt-1" />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="dateEmbauche"
