@@ -1,6 +1,6 @@
 // components/sessions/SessionsTable.tsx
 import { type ReactElement } from 'react'
-import Button from '@/components/core/Button'
+import { FuckingButton } from '@/components/core/Button'
 
 // ✅ Types définis localement pour éviter les problèmes d'import
 interface EscapeGame {
@@ -233,48 +233,48 @@ export default function SessionsTable({
                     {/* Changer statut */}
                     {canChangeStatus(session.statut) && (
                       <div className="relative group">
-                        <Button
+                        <FuckingButton
                           variant="secondary"
                           color="blue"
                           size="sm"
                           className="min-w-0 px-2"
                         >
                           ⟲
-                        </Button>
+                        </FuckingButton>
                         <div className="absolute right-0 top-8 hidden group-hover:block bg-gray-800 border border-gray-700 rounded shadow-lg py-1 z-10">
                           {getNextStatuses(session.statut).map(status => (
-                            <button
+                            <FuckingButton
                               key={status}
                               onClick={() => onStatusChange(session.id, status)}
                               className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white w-full text-left"
                             >
                               → {status}
-                            </button>
+                            </FuckingButton>
                           ))}
                         </div>
                       </div>
                     )}
 
                     {/* Éditer */}
-                    <Button
+                    <FuckingButton
                       variant="secondary"
                       color="gray"
                       size="sm"
                       onClick={() => onEdit(session)}
                     >
                       ✏️
-                    </Button>
+                    </FuckingButton>
 
                     {/* Supprimer */}
                     {['Réservée', 'Annulée'].includes(session.statut) && (
-                      <Button
+                      <FuckingButton
                         variant="secondary"
                         color="red"
                         size="sm"
                         onClick={() => onDelete(session.id)}
                       >
                         🗑️
-                      </Button>
+                      </FuckingButton>
                     )}
                   </div>
                 </td>

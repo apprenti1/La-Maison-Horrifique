@@ -1,7 +1,7 @@
 import { type ReactElement } from "react"
 import FloatingHorrorElements from '../../components/FloatingHorrorElements.tsx'
 import BackgroundEffects from "@/components/BackgroundEffects.tsx";
-import NavBarEscapeGames from "@/components/navbar/NavBarEscapeGames.tsx";
+import Navbar from "@/components/navbar/Navbar.tsx";
 import EscapeGamesGrid from "@/app/escapegames/EscapeGamesGrid.tsx";
 
 
@@ -15,7 +15,7 @@ export default function EscapeGamesPage(): ReactElement {
             <FloatingHorrorElements />
 
             {/* Navbar */}
-            <NavBarEscapeGames />
+            <Navbar />
 
             <EscapeGamesGrid></EscapeGamesGrid>
 

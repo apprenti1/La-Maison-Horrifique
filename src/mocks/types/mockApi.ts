@@ -19,8 +19,8 @@ export interface EscapeGame {
   
   export interface Employee {
     id: string
-    nom: string
-    prenom: string
+    surname: string
+    name: string
     email: string
     telephone: string
     poste: 'Game Master' | 'Accueil' | 'Manager' | 'Technicien'
@@ -29,6 +29,7 @@ export interface EscapeGame {
     dateEmbauche: string
     createdAt: string
     updatedAt: string
+    password: string
   }
   
   export interface Session {

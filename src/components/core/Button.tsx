@@ -1,4 +1,5 @@
 import type { ReactNode, ReactElement } from "react"
+import { NavLink } from "react-router-dom"
 
 export const FuckingButton = ({
   variant = "primary", 
@@ -66,9 +67,9 @@ export const FuckingButton = ({
   
   if (href) {
     return (
-      <a href={href} className={`${classes} block text-center`} {...props}>
+      <NavLink to={href} className={`${classes} block text-center`} {...props}>
         {children}
-      </a>
+      </NavLink>
     )
   }
   

@@ -1,7 +1,7 @@
 // components/sessions/SessionModal.tsx
 import { useState, useEffect, type ReactElement } from 'react'
 import type { EscapeGame, Employee } from '@/mocks/types/mockApi'
-import Button from '@/components/core/Button'
+import { FuckingButton } from '@/components/core/Button'
 
 interface SessionModalProps {
   mode: 'create' | 'edit'
@@ -201,12 +201,12 @@ export default function SessionModal({
             <h2 className="text-2xl font-bold text-white">
               {mode === 'create' ? '🎮 Nouvelle Session' : '✏️ Modifier Session'}
             </h2>
-            <button
+            <FuckingButton
               onClick={onClose}
               className="text-gray-400 hover:text-white text-2xl"
             >
               ×
-            </button>
+            </FuckingButton>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -249,7 +249,7 @@ export default function SessionModal({
                 <option value="">Sélectionner un Game Master</option>
                 {employees.map(emp => (
                   <option key={emp.id} value={emp.id}>
-                    {emp.prenom} {emp.nom}
+                    {emp.name} {emp.surname}
                   </option>
                 ))}
               </select>
@@ -400,24 +400,24 @@ export default function SessionModal({
 
             {/* Actions */}
             <div className="flex justify-end gap-4 pt-6 border-t border-gray-700">
-              <Button
-                type="button"
+              <FuckingButton
+                type="FuckingButton"
                 variant="secondary"
                 color="gray"
                 onClick={onClose}
                 disabled={loading}
               >
                 Annuler
-              </Button>
+              </FuckingButton>
               
-              <Button
+              <FuckingButton
                 type="submit"
                 variant="primary"
                 color="red"
                 disabled={loading}
               >
                 {loading ? 'En cours...' : (mode === 'create' ? 'Créer Session' : 'Modifier Session')}
-              </Button>
+              </FuckingButton>
             </div>
           </form>
         </div>

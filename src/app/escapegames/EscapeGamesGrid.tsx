@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import type {ReactElement} from "react";
 import type {EscapeGame} from "@/mocks/types/mockApi.ts";
 import EscapeGameCard from "@/app/escapegames/EscapeGameCard.tsx";
+import {Link} from "@/components/core/Link";
+import { Routes as AppRoutes } from "@/lib/utils";
+
 
 export default function EscapeGamesGrid(): ReactElement {
     const [games, setGames] = useState<EscapeGame[]>([]);
@@ -28,7 +31,16 @@ export default function EscapeGamesGrid(): ReactElement {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 mt-20">
+        <div className="m-3 mt-20 relative z-50 display flex flex-col items-center justify-center">
+        <Link path={AppRoutes.escapeGameCreate.toString()}
+                className="bg-red-800 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors duration-300 flex items-center space-x-2 w-fit">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            <span>Nouvel Escape Game</span>
+        </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
             {games.map((game) => (
                 <EscapeGameCard
                     game={game}
@@ -49,6 +61,7 @@ export default function EscapeGamesGrid(): ReactElement {
                     onToggleStatus={() => console.log("Toggle statut", game.id)}
                 />
             ))}
+        </div>
         </div>
     ) as React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
 }

@@ -60,4 +60,10 @@ export const Routes = {
   legalNotices: {
     toString: () => "/legal-notices" as const,
   },
+  employees: {
+    toString: () => "/employees" as const,
+  },
+  sessions: {
+    toString: () => "/sessions" as const,
+  }
 }

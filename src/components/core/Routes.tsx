@@ -2,6 +2,7 @@
 import { Navigate } from "react-router-dom";
 import { isAuthenticated } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import type { employees } from "@/mocks/handlers";
 
 export function PrivateRoute({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -76,6 +77,9 @@ export const Routes = {
   },
   escapeGamesStats: {
     toString: () => `/escape-games/stats` as const,
+  },
+  employees: {
+    toString: () => "/employees" as const,
   },
   sessions: {
     toString: () => "/sessions" as const,

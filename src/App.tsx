@@ -11,6 +11,7 @@ import EscapeGamesCreatePage from "@/app/escapegames/create/Page.tsx";
 import {Routes as AppRoutes} from "./lib/utils";
 import LegalNoticesPage from "./app/legal-notices/page";
 import CreateEmployeePage from "./app/dashboard/create-employee/page";
+import EmployeesPage from "@/app/dashboard/create-employee/page.tsx";
 
 export default function App() {
   return (
@@ -102,12 +103,22 @@ export default function App() {
         }
       />
       <Route
+        path={AppRoutes.employees.toString()}
+        element={
+          <PrivateRoute>
+            <EmployeesPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path={AppRoutes.sessions.toString()}
         element={
           <PrivateRoute>
             <SessionsManagementPage />
           </PrivateRoute>
         }
+      />
+      <Route
         path={AppRoutes.legalNotices.toString()}
         element={<LegalNoticesPage />}
       />

@@ -1,17 +1,18 @@
 
 import type { JSX } from "react"
 
-import { Link as InternalLink } from "react-router-dom"
+import {NavLink, Link as InternalLink } from "react-router-dom"
+import {HashLink} from "react-router-hash-link"
 
 export function Link({ text, path = '/', children, className }: { path?: string; text?: string; children?: JSX.Element | JSX.Element[]; className?: string }) {
   return (
-    <InternalLink to={path} className={className}>
+    <HashLink smooth to={path} className={className}>
       {text ? (
         <p className="text-white hover:text-gray-400 transition duration-100">{text}</p>
       ) : (
         children
       )}
-    </InternalLink>
+    </HashLink>
   );
 }
 

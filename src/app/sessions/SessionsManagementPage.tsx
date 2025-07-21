@@ -1,9 +1,9 @@
 // pages/sessions/SessionsManagementPage.tsx
 import { useState, type ReactElement } from 'react'
 import Navbar from '@/components/navbar/Navbar'
-import BackgroundEffects from '../dashboard/BackgroundEffects'
-import FloatingHorrorElements from '../dashboard/FloatingHorrorElements'
-import Button from '@/components/core/Button'
+import BackgroundEffects from '@/components/BackgroundEffects'
+import FloatingHorrorElements from '@/components/FloatingHorrorElements'
+import { FuckingButton } from '@/components/core/Button'
 import { useSessions } from '@/hooks/useSessions'
 import { useEscapeGames } from '@/hooks/useEscapeGames'
 import SessionsTable from './SessionsTable'
@@ -138,32 +138,32 @@ export default function SessionsManagementPage(): ReactElement {
         {/* Actions et filtres */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-8">
           <div className="flex gap-4">
-            <Button
+            <FuckingButton
               variant="primary"
               color="red"
               size="md"
               onClick={handleCreateSession}
             >
               + Nouvelle Session
-            </Button>
+            </FuckingButton>
             
-            <Button
+            <FuckingButton
               variant="secondary"
               color="gray"
               size="md"
               onClick={() => setFilters({ date: getTodayDate(), escapeGameId: '', statut: '' })}
             >
               Aujourd'hui
-            </Button>
+            </FuckingButton>
             
-            <Button
+            <FuckingButton
               variant="secondary"
               color="gray" 
               size="md"
               onClick={refetch}
             >
               Actualiser
-            </Button>
+            </FuckingButton>
           </div>
 
           <div className="text-sm text-gray-400">
@@ -188,9 +188,9 @@ export default function SessionsManagementPage(): ReactElement {
             <div className="text-6xl mb-4">😱</div>
             <h3 className="text-red-400 font-bold mb-2">Erreur de chargement</h3>
             <p className="text-gray-300 mb-4">{error}</p>
-            <Button variant="primary" color="red" onClick={refetch}>
+            <FuckingButton variant="primary" color="red" onClick={refetch}>
               Réessayer
-            </Button>
+            </FuckingButton>
           </div>
         ) : loading ? (
           <div className="admin-card rounded-xl p-8 text-center">
@@ -204,9 +204,9 @@ export default function SessionsManagementPage(): ReactElement {
             <p className="text-gray-400 mb-4">
               Aucune session ne correspond aux critères sélectionnés.
             </p>
-            <Button variant="primary" color="red" onClick={handleCreateSession}>
+            <FuckingButton variant="primary" color="red" onClick={handleCreateSession}>
               Créer la première session
-            </Button>
+            </FuckingButton>
           </div>
         ) : (
           <SessionsTable
