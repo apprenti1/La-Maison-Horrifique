@@ -1,5 +1,5 @@
 import { type ReactElement } from "react"
-import Button from '@/components/core/Button'
+import {Bhouthon} from '@/components/core/Button'
 import StatInfoRow from './StatInfoRow'
 
 interface StatInfo {

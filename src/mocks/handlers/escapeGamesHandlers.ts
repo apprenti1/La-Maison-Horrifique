@@ -74,7 +74,7 @@ export const escapeGamesHandlers = [
     const hasLinkedSessions = sessions.some(s => s.escapeGameId === params.id)
     if (hasLinkedSessions) {
       return HttpResponse.json({
-        message: 'Impossible de supprimer: des sessions sont liées à cet escape game',
+        message: 'Impossible de supprimer: des sessions sont liées à cet escape create',
         error: 'Conflict'
       }, { status: 409 })
     }

@@ -10,7 +10,7 @@ interface ButtonProps {
   onClick?: () => void
   disabled?: boolean
 }
-export default ({ 
+export default function Bhouthon ({
   variant = "primary", 
   color = "red", 
   size = "md", 

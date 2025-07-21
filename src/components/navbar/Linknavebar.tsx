@@ -23,6 +23,8 @@ export default function LinkNavbar() {
             {navItems.map((item) => (
                 <Link key={item.id} path={`#${item.id}`} text={item.label} />
             ))}
+            {isAuth ? <Link path="/dashboard" text="Admin"/> : <></>}
+
             <div className="flex items-center space-x-4">                
                 <Link path={isAuth ? Routes.logout.toString() : Routes.login.toString()} className="flex items-center space-x-2 bg-red-800 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors duration-300">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
