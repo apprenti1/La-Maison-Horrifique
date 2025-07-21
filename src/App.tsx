@@ -6,6 +6,7 @@ import DashboardPage from "./app/dashboard/Page";
 import LogoutPage from "./app/logout/Page";
 import {Routes as AppRoutes} from "./components/core/Routes";
 import { Navigate } from "react-router-dom";
+import SessionsManagementPage from "./app/sessions/SessionsManagementPage";
 
 export default function App() {
   return (
@@ -85,6 +86,14 @@ export default function App() {
           <PrivateRoute>
             {/* Placeholder for Escape Game Stats Page */}
             <div>Escape Game Stats Page</div>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={AppRoutes.sessions.toString()}
+        element={
+          <PrivateRoute>
+            <SessionsManagementPage />
           </PrivateRoute>
         }
       />
