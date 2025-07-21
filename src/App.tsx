@@ -8,6 +8,8 @@ import {Navigate} from "react-router-dom";
 import EscapeGamesPage from "@/app/escapegames/Page.tsx";
 import EscapeGamesCreatePage from "@/app/escapegames/create/Page.tsx";
 import {Routes as AppRoutes} from "./lib/utils";
+import LegalNoticesPage from "./app/legal-notices/page";
+import CreateEmployeePage from "./app/dashboard/create-employee/page";
 
 export default function App() {
   return (
@@ -33,6 +35,14 @@ export default function App() {
         element={
           <PrivateRoute>
             <DashboardPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={AppRoutes.dashboard.createEmployees.toString()}
+        element={
+          <PrivateRoute>
+            <CreateEmployeePage />
           </PrivateRoute>
         }
       />
@@ -90,14 +100,14 @@ export default function App() {
           </PrivateRoute>
         }
       />
-      {/*<Route*/}
-      {/*  path={AppRoutes.legalNotices.toString()}*/}
-      {/*  element={*/}
-      {/*    <PublicRoute>*/}
-      {/*      <LegalNoticesPage />*/}
-      {/*    </PublicRoute>*/}
-      {/*  }*/}
-      {/*/>*/}
+      <Route
+        path={AppRoutes.legalNotices.toString()}
+        element={
+          <PublicRoute>
+            <LegalNoticesPage />
+          </PublicRoute>
+        }
+      />
       <Route
         path="*"
         element={<Navigate to={AppRoutes.home.toString()} replace />}
