@@ -1,5 +1,5 @@
 import { Link } from "@/components/core/Link";
-import { Routes } from "@/components/core/Routes";
+import { Routes } from "@/lib/utils";
 import { isAuthenticated } from "@/lib/utils";
 import { useEffect, useState } from "react";
 

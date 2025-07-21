@@ -2,7 +2,7 @@ import { FaInstagram, FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FooterBlock } from "./FooterBlock";
 import { LinkIcon, Link } from "@/components/core/Link";
 import icon from "@/assets/maison-hantee.png";
-import { Routes } from "../core/Routes";
+import { Routes } from "@/lib/utils";
 
 export const block1 = [
   {

@@ -1,5 +1,5 @@
 import { type ReactElement } from "react"
-import Button from '@/components/core/Button'
+import { FuckingButton } from '@/components/core/Button'
 
 interface QuickAction {
   label: string
@@ -19,7 +19,7 @@ export default function QuickActions(): ReactElement {
       <h3 className="text-xl font-bold text-white mb-4">Actions Rapides</h3>
       <div className="gap-4 flex justify-evenly">
         {actions.map((action: QuickAction, index: number) => (
-          <Button
+          <FuckingButton
             key={index}
             variant="primary"
             color={action.color}
@@ -27,7 +27,7 @@ export default function QuickActions(): ReactElement {
             href={action.href}
           >
             {action.label}
-          </Button>
+          </ FuckingButton>
         ))}
       </div>
     </div>

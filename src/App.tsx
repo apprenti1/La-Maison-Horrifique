@@ -4,7 +4,7 @@ import LoginPage from "./app/login/Page";
 import { PrivateRoute, PublicRoute } from "./components/core/Routes";
 import DashboardPage from "./app/dashboard/Page";
 import LogoutPage from "./app/logout/Page";
-import {Routes as AppRoutes} from "./components/core/Routes";
+import {Routes as AppRoutes} from "./lib/utils";
 import { Navigate } from "react-router-dom";
 import LegalNoticesPage from "./app/legal-notices/page";
 

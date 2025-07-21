@@ -1,6 +1,6 @@
 "use client"
 import { Navigate } from "react-router-dom";
-import { isAuthenticated } from "@/lib/utils";
+import { isAuthenticated, Routes } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export function PrivateRoute({ children }: { children: React.ReactNode }) {
@@ -41,43 +41,4 @@ export const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   if (loading) return <div>Chargement...</div>;
   if (auth) return <Navigate to={Routes.home.toString()} replace />;
   return <>{children}</>;
-}
-
-export const Routes = {
-  home: {
-    toString: () => "/" as const,
-  },
-  login: {
-    toString: () => "/login" as const,
-  },
-  logout: {
-    toString: () => "/logout" as const,
-  },
-  dashboard: {
-    toString: () => "/dashboard" as const,
-  },
-  escapeGames: {
-    toString: () => "/escape-games" as const,
-  },
-  escapeGame: {
-    toString: (id: string) => `/escape-games/${id}` as const,
-  },
-  escapeGameCreate: {
-    toString: () => "/escape-games/create" as const,
-  },
-  escapeGameEdit: {
-    toString: (id: string) => `/escape-games/${id}/edit` as const,
-  },
-  escapeGameDelete: {
-    toString: (id: string) => `/escape-games/${id}/delete` as const,
-  },
-  escapeGameStats: {
-    toString: (id: string) => `/escape-games/${id}/stats` as const,
-  },
-  escapeGamesStats: {
-    toString: () => `/escape-games/stats` as const,
-  },
-  legalNotices: {
-    toString: () => "/legal-notices" as const,
-  },
 }

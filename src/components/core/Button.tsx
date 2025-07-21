@@ -1,16 +1,6 @@
-import { useState, type ReactNode, type ReactElement } from "react"
+import type { ReactNode, ReactElement } from "react"
 
-interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'link'
-  color?: 'red' | 'purple' | 'green' | 'blue' | 'gray'
-  size?: 'sm' | 'md' | 'lg'
-  children: ReactNode
-  href?: string
-  className?: string
-  onClick?: () => void
-  disabled?: boolean
-}
-export default ({ 
+export const FuckingButton = ({ 
   variant = "primary", 
   color = "red", 
   size = "md", 

@@ -1,7 +1,7 @@
 import LinkNavbar from "@/components/navbar/Linknavebar";
 import icon from "@/assets/maison-hantee.png";
 import { Link } from "@/components/core/Link";
-import { Routes } from "@/components/core/Routes";
+import { Routes } from "@/lib/utils";
 
 export default function Navbar() {
     return (
