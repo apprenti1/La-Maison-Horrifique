@@ -6,6 +6,7 @@ import DashboardPage from "./app/dashboard/Page";
 import LogoutPage from "./app/logout/Page";
 import {Routes as AppRoutes} from "./components/core/Routes";
 import { Navigate } from "react-router-dom";
+import LegalNoticesPage from "./app/legal-notices/page";
 
 export default function App() {
   return (
@@ -86,6 +87,14 @@ export default function App() {
             {/* Placeholder for Escape Game Stats Page */}
             <div>Escape Game Stats Page</div>
           </PrivateRoute>
+        }
+      />
+      <Route
+        path={AppRoutes.legalNotices.toString()}
+        element={
+          <PublicRoute>
+            <LegalNoticesPage />
+          </PublicRoute>
         }
       />
       <Route

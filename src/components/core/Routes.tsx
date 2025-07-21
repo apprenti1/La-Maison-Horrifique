@@ -77,4 +77,7 @@ export const Routes = {
   escapeGamesStats: {
     toString: () => `/escape-games/stats` as const,
   },
+  legalNotices: {
+    toString: () => "/legal-notices" as const,
+  },
 }
