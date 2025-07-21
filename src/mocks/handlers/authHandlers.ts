@@ -25,6 +25,30 @@ export const authHandlers = [
       }, { status: 200 })
     }
 
+    if (email === 'employee@employee.io' && password === 'Azerty1234!') {
+      return HttpResponse.json({
+        token: 'fake-jwt-token',
+        user: {
+          id: 'employee-1',
+          email: 'employee@employee.io',
+          name: 'Employé',
+          role: 'employee'
+        }
+      }, { status: 200 })
+    }
+
+    if (email === 'user@user.io' && password === 'Azerty1234!') {
+      return HttpResponse.json({
+        token: 'fake-jwt-token',
+        user: {
+          id: 'user-1',
+          email: 'user@user.io',
+          name: 'Utilisateur',
+          role: 'user'
+        }
+      }, { status: 200 })
+    }
+
     return HttpResponse.json({
       message: 'Identifiants invalides',
       error: 'Unauthorized',
@@ -61,6 +85,13 @@ export const authHandlers = [
 
   http.post(`${API_URL}/logout`, async ({ request }) => {
     const { token } = await request.json() as { token: string }
+
+    if (!token || token !== 'fake-jwt-token') {
+      return HttpResponse.json({
+        message: 'Token invalide',
+        error: 'Unauthorized',
+      }, { status: 401 })
+    }
 
     return HttpResponse.json({
       message: 'Déconnexion réussie'
