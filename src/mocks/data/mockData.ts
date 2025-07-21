@@ -216,8 +216,8 @@ export const sessions: Session[] = [
     escapeGameId: '1',
     employeeId: '1',
     clientInfo: {
-      name: 'Dupont',
-      surname: 'Michel',
+      nom: 'Dupont',
+      prenom: 'Michel',
       email: 'michel.dupont@email.com',
       telephone: '06.11.22.33.44',
       nombrePersonnes: 4
@@ -233,8 +233,8 @@ export const sessions: Session[] = [
     escapeGameId: '2',
     employeeId: '2',
     clientInfo: {
-      name: 'Lambert',
-      surname: 'Sarah',
+      nom: 'Lambert',
+      prenom: 'Sarah',
       email: 'sarah.lambert@email.com',
       telephone: '06.22.33.44.55',
       nombrePersonnes: 3
@@ -250,8 +250,8 @@ export const sessions: Session[] = [
     escapeGameId: '3',
     employeeId: '5',
     clientInfo: {
-      name: 'Rousseau',
-      surname: 'David',
+      nom: 'Rousseau',
+      prenom: 'David',
       email: 'david.rousseau@email.com',
       telephone: '06.33.44.55.66',
       nombrePersonnes: 6
@@ -267,8 +267,8 @@ export const sessions: Session[] = [
     escapeGameId: '1',
     employeeId: '1',
     clientInfo: {
-      name: 'Moreau',
-      surname: 'Julie',
+      nom: 'Moreau',
+      prenom: 'Julie',
       email: 'julie.moreau@email.com',
       telephone: '06.44.55.66.77',
       nombrePersonnes: 2
@@ -286,8 +286,8 @@ export const sessions: Session[] = [
     escapeGameId: '2',
     employeeId: '2',
     clientInfo: {
-      name: 'Vincent',
-      surname: 'Laura',
+      nom: 'Vincent',
+      prenom: 'Laura',
       email: 'laura.vincent@email.com',
       telephone: '06.55.66.77.88',
       nombrePersonnes: 4
@@ -304,8 +304,8 @@ export const sessions: Session[] = [
     escapeGameId: '3',
     employeeId: '5',
     clientInfo: {
-      name: 'Simon',
-      surname: 'Marc',
+      nom: 'Simon',
+      prenom: 'Marc',
       email: 'marc.simon@email.com',
       telephone: '06.66.77.88.99',
       nombrePersonnes: 5

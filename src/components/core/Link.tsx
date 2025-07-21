@@ -1,7 +1,7 @@
 
 import type { JSX } from "react"
 
-import {NavLink, Link as InternalLink } from "react-router-dom"
+import {Link as InternalLink } from "react-router-dom"
 import {HashLink} from "react-router-hash-link"
 
 export function Link({ text, path = '/', children, className }: { path?: string; text?: string; children?: JSX.Element | JSX.Element[]; className?: string }) {

@@ -401,7 +401,6 @@ export default function SessionModal({
             {/* Actions */}
             <div className="flex justify-end gap-4 pt-6 border-t border-gray-700">
               <FuckingButton
-                type="FuckingButton"
                 variant="secondary"
                 color="gray"
                 onClick={onClose}
@@ -411,7 +410,6 @@ export default function SessionModal({
               </FuckingButton>
               
               <FuckingButton
-                type="submit"
                 variant="primary"
                 color="red"
                 disabled={loading}

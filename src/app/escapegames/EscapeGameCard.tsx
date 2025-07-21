@@ -20,34 +20,33 @@ type EscapeGameCardProps = {
 };
 
 export default function EscapeGameCard({
-                                           game,
-                                           emoji,
-                                           status,
-                                           title,
-                                           description,
-                                           duration,
-                                           players,
-                                           level,
-                                           price,
-                                           rating,
-                                           ratingStars,
-                                           sessionsThisMonth,
-                                           onEdit,
-                                           onViewStats,
-                                           onToggleStatus,
-                                       }: EscapeGameCardProps): ReactElement {
+    emoji,
+    status,
+    title,
+    description,
+    duration,
+    players,
+    level,
+    price,
+    rating,
+    ratingStars,
+    sessionsThisMonth,
+    onEdit,
+    onViewStats,
+    onToggleStatus,
+}: EscapeGameCardProps): ReactElement {
     return (
         <div className="game-card rounded-xl overflow-hidden bg-zinc-900 z-50">
             <div className="relative h-48 bg-gradient-to-br from-blue-900/80 to-black flex items-center justify-center">
                 <span className="text-6xl">{emoji}</span>
                 <div className="absolute top-4 right-4">
-          <span
-              className={`px-3 py-1 rounded-full text-sm font-medium ${
-                  status === "Actif" ? "bg-green-600" : "bg-red-600"
-              }`}
-          >
+            <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${
+                status === "Actif" ? "bg-green-600" : "bg-red-600"
+            }`}
+            >
             {status}
-          </span>
+            </span>
                 </div>
             </div>
 
@@ -86,7 +85,7 @@ export default function EscapeGameCard({
                     <div>
                         <span className="text-gray-400">Difficulté:</span>
                         <span className="bg-orange-600 px-2 py-1 rounded text-xs ml-2">
-              {level}
+            {level}
             </span>
                     </div>
                     <div>
