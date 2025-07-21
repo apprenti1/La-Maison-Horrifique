@@ -30,7 +30,6 @@ interface Employee {
   telephone: string
   poste: 'Game Master' | 'Accueil' | 'Manager' | 'Technicien'
   statut: 'Actif' | 'Inactif' | 'Congé' | 'Formation'
-  salaire: number
   dateEmbauche: string
   createdAt: string
   updatedAt: string

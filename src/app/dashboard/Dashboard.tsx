@@ -1,6 +1,7 @@
 import { type ReactElement } from "react"
 import StatCard from './StatCard'
 import ManagementCard from './ManagementCard'
+import { Routes } from "@/lib/utils"
 
 interface StatData {
   title: string
@@ -52,8 +53,8 @@ export default function Dashboard(): ReactElement {
         { label: "En maintenance :", value: "1 jeu", valueColor: "text-yellow-400" },
         { label: "Popularité :", value: "★ 4.8/5", valueColor: "text-green-400" }
       ],
-      primaryAction: { label: "Gérer les Escape Games", href: "/escape-games", color: "red" },
-      secondaryAction: { label: "Voir les Statistiques", href: "/escape-games/stats" }
+      primaryAction: { label: "Gérer les Escape Games", href: Routes.escapeGames.toString(), color: "red" },
+      secondaryAction: { label: "Voir les Statistiques", href: Routes.escapeGamesStats.toString() }
     },
     {
       title: "Sessions",
@@ -65,8 +66,8 @@ export default function Dashboard(): ReactElement {
         { label: "En cours :", value: "3 actives", valueColor: "text-green-400" },
         { label: "Prochaine :", value: "18h30", valueColor: "text-blue-400" }
       ],
-      primaryAction: { label: "Gérer les Sessions", href: "/sessions", color: "purple" },
-      secondaryAction: { label: "Planning du Jour", href: "/sessions/planning" }
+      primaryAction: { label: "Gérer les Sessions", href: Routes.dashboard.sessions.toString(), color: "purple" },
+      secondaryAction: { label: "Planning du Jour", href: Routes.dashboard.sessions.planning.toString() }
     },
     {
       title: "Game Masters",
@@ -78,8 +79,8 @@ export default function Dashboard(): ReactElement {
         { label: "En service :", value: "5 actifs", valueColor: "text-green-400" },
         { label: "Formations :", value: "2 en cours", valueColor: "text-blue-400" }
       ],
-      primaryAction: { label: "Gérer les Employés", href: "/employees", color: "green" },
-      secondaryAction: { label: "Planning Équipe", href: "/employees/planning" }
+      primaryAction: { label: "Gérer les Employés", href: Routes.dashboard.employees.toString(), color: "green" },
+      secondaryAction: { label: "Planning Équipe", href: '#' }
     }
   ]
 

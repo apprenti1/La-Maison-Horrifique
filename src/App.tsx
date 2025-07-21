@@ -4,14 +4,14 @@ import LoginPage from "./app/login/Page";
 import {PrivateRoute, PublicRoute} from "./components/core/Routes";
 import DashboardPage from "./app/dashboard/Page";
 import LogoutPage from "./app/logout/Page";
-import SessionsManagementPage from "./app/sessions/SessionsManagementPage";
+import SessionsManagementPage from "./app/dashboard/sessions/SessionsManagementPage";
 import {Navigate} from "react-router-dom";
 import EscapeGamesPage from "@/app/escapegames/Page.tsx";
 import EscapeGamesCreatePage from "@/app/escapegames/create/Page.tsx";
 import {Routes as AppRoutes} from "./lib/utils";
 import LegalNoticesPage from "./app/legal-notices/page";
-import CreateEmployeePage from "./app/dashboard/create-employee/page";
-import EmployeesPage from "@/app/dashboard/create-employee/page.tsx";
+import CreateEmployeePage from "./app/dashboard/employees/create-employee/page";
+import EmployeesPage from "@/app/dashboard/employees/page.tsx";
 
 export default function App() {
   return (
@@ -41,10 +41,18 @@ export default function App() {
         }
       />
       <Route
-        path={AppRoutes.dashboard.createEmployees.toString()}
+        path={AppRoutes.dashboard.employees.create.toString()}
         element={
           <PrivateRoute>
             <CreateEmployeePage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={AppRoutes.dashboard.employees.toString()}
+        element={
+          <PrivateRoute>
+            <EmployeesPage />
           </PrivateRoute>
         }
       />
@@ -103,15 +111,7 @@ export default function App() {
         }
       />
       <Route
-        path={AppRoutes.employees.toString()}
-        element={
-          <PrivateRoute>
-            <EmployeesPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={AppRoutes.sessions.toString()}
+        path={AppRoutes.dashboard.sessions.toString()}
         element={
           <PrivateRoute>
             <SessionsManagementPage />

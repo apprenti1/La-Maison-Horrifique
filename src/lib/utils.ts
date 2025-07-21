@@ -34,7 +34,18 @@ export const Routes = {
   },
   dashboard: {
     toString: () => "/dashboard" as const,
-    createEmployees: () => "/dashboard/employees/create" as const,
+    employees: {
+      toString: () => "/dashboard/employees" as const,
+      create: {
+        toString: () => "/dashboard/employees/create" as const,
+      },
+    },
+    sessions: {
+      toString: () => "/dashboard/sessions" as const,
+      planning: {
+        toString: () => "/dashboard/sessions/planning" as const,
+      },
+    },
   },
   escapeGames: {
     toString: () => "/escape-games" as const,
@@ -60,10 +71,4 @@ export const Routes = {
   legalNotices: {
     toString: () => "/legal-notices" as const,
   },
-  employees: {
-    toString: () => "/employees" as const,
-  },
-  sessions: {
-    toString: () => "/sessions" as const,
-  }
 }
