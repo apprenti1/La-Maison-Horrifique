@@ -21,3 +21,42 @@ export async function isAuthenticated() {
   });
   return (response.ok && response.status === 200)
 }
+
+export const Routes = {
+  home: {
+    toString: () => "/" as const,
+  },
+  login: {
+    toString: () => "/login" as const,
+  },
+  logout: {
+    toString: () => "/logout" as const,
+  },
+  dashboard: {
+    toString: () => "/dashboard" as const,
+  },
+  escapeGames: {
+    toString: () => "/escape-games" as const,
+  },
+  escapeGame: {
+    toString: (id: string) => `/escape-games/${id}` as const,
+  },
+  escapeGameCreate: {
+    toString: () => "/escape-games/create" as const,
+  },
+  escapeGameEdit: {
+    toString: (id: string) => `/escape-games/${id}/edit` as const,
+  },
+  escapeGameDelete: {
+    toString: (id: string) => `/escape-games/${id}/delete` as const,
+  },
+  escapeGameStats: {
+    toString: (id: string) => `/escape-games/${id}/stats` as const,
+  },
+  escapeGamesStats: {
+    toString: () => `/escape-games/stats` as const,
+  },
+  legalNotices: {
+    toString: () => "/legal-notices" as const,
+  },
+}

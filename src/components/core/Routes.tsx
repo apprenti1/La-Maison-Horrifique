@@ -1,6 +1,6 @@
 "use client"
 import { Navigate } from "react-router-dom";
-import { isAuthenticated } from "@/lib/utils";
+import { isAuthenticated, Routes } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export function PrivateRoute({ children }: { children: React.ReactNode }) {

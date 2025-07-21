@@ -1,5 +1,5 @@
 import { type ReactElement } from "react"
-import {Bhouthon} from '@/components/core/Button'
+import { FuckingButton } from '@/components/core/Button'
 import StatInfoRow from './StatInfoRow'
 
 interface StatInfo {
@@ -58,7 +58,7 @@ export default function ManagementCard({
       
       <div className="space-y-3">
         {primaryAction && (
-          <Button
+          <FuckingButton
             variant="primary"
             color={primaryAction.color}
             size="lg"
@@ -66,10 +66,10 @@ export default function ManagementCard({
             className="w-full"
           >
             {primaryAction.label}
-          </Button>
+          </FuckingButton>
         )}
         {secondaryAction && (
-          <Button
+          <FuckingButton
             variant="secondary"
             color="gray"
             size="md"
@@ -77,7 +77,7 @@ export default function ManagementCard({
             className="w-full"
           >
             {secondaryAction.label}
-          </Button>
+          </FuckingButton>
         )}
       </div>
     </div>
