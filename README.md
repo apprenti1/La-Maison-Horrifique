@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# La Maison Horrifique
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projet fil rouge réalisé en React par :
 
-Currently, two official plugins are available:
+- **Elias**
+- **Mathias**
+- **Alexandre**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Description
 
-## Expanding the ESLint configuration
+**La Maison Horrifique** est un site web conçu pour une société proposant des sessions d’escape game immersives sur le thème de l’horreur. L’application permet d’augmenter la visibilité de l’entreprise et de gérer ses réservations.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Fonctionnalités principales
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+✅ Gestion de compte employé  
+✅ Création et édition des sessions d’escape game par les employés :  
+- Thème  
+- Durée  
+- Prix  
+- Nombre de participants minimum  
+- Créneaux disponibles
+
+✅ Affichage des sessions d’escape game pour les clients  
+✅ Réservation de créneaux pour participer à des sessions avec :  
+- Adresse mail du client  
+- Session d’escape game et créneau choisi  
+- Nombre de participants
+
+✅ Annulation des créneaux par les employés  
+✅ Thème sombre par défaut avec possibilité de changer le thème (préférence conservée après refresh)  
+✅ Formulaire de contact  
+✅ Page de mentions légales
+
+## 💻 Technologies utilisées
+
+- **React** (Frontend)
+- **json-server** (Mock Backend pour développement)
+
+## ⚠️ Modalités du projet
+
+- Groupe de 2-3 étudiants
+- Rendu : fichier zip sur la plateforme MyGES
+- Oral de 20 minutes :  
+  - 10 minutes de démonstration des fonctionnalités  
+  - 5 minutes de présentation du code  
+  - 5 minutes de questions
+
+## 📁 Installation et lancement
+
+1. Clonez le dépôt :
+
+```bash
+git clone [URL_DU_REPO]
+cd maison-horrifique
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Installer les dépendances
+```bash
+nvm use
+npm install
 ```
+
+3. Build & Run
+```bash
+npm run build
+npm start
