@@ -102,11 +102,7 @@ export default function App() {
       />
       <Route
         path={AppRoutes.legalNotices.toString()}
-        element={
-          <PublicRoute>
-            <LegalNoticesPage />
-          </PublicRoute>
-        }
+        element={<LegalNoticesPage />}
       />
       <Route
         path="*"
