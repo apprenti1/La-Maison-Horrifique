@@ -21,14 +21,15 @@ export interface EscapeGame {
   
   export interface Employee {
     id: string
-    nom: string
-    prenom: string
+    name: string
+    surname: string
     email: string
-    telephone: string
+    password: string
+    telephone?: string
     poste: 'Game Master' | 'Accueil' | 'Manager' | 'Technicien'
     statut: 'Actif' | 'Inactif' | 'Congé' | 'Formation'
-    salaire: number
-    dateEmbauche: string
+    salaire?: number
+    dateEmbauche?: string
     createdAt: string
     updatedAt: string
   }
@@ -38,8 +39,8 @@ export interface EscapeGame {
     escapeGameId: string
     employeeId: string
     clientInfo: {
-      nom: string
-      prenom: string
+      name: string
+      surname: string
       email: string
       telephone: string
       nombrePersonnes: number

@@ -37,10 +37,9 @@ export const employeesHandlers = [
 
   http.post(`${API_URL}/employees`, async ({ request }) => {
     const newEmployee = await request.json() as Omit<Employee, 'id' | 'createdAt' | 'updatedAt'>
-    
-    if (!newEmployee.nom || !newEmployee.prenom || !newEmployee.email) {
+    if (!newEmployee.email || !newEmployee.password || !newEmployee.name || !newEmployee.surname) {
       return HttpResponse.json({
-        message: 'Nom, prénom et email sont requis',
+        message: 'Tous les champs sont requis',
         error: 'Bad Request'
       }, { status: 400 })
     }

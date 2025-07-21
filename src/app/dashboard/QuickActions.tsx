@@ -1,5 +1,6 @@
 import { type ReactElement } from "react"
 import { FuckingButton } from '@/components/core/Button'
+import { Routes } from "@/lib/utils"
 
 interface QuickAction {
   label: string
@@ -9,9 +10,9 @@ interface QuickAction {
 
 export default function QuickActions(): ReactElement {
   const actions: QuickAction[] = [
-    { label: "+ Nouvel Escape Game", href: "/escape-games/new", color: "red" },
-    { label: "+ Nouvelle Session", href: "/sessions/new", color: "purple" },
-    { label: "+ Nouvel Employé", href: "/employees/new", color: "green" }
+    { label: "+ Nouvel Escape Game", href: "#", color: "red" },
+    { label: "+ Nouvelle Session", href: "#", color: "purple" },
+    { label: "+ Nouvel Employé", href: Routes.dashboard.createEmployees.toString(), color: "green" }
   ]
 
   return (

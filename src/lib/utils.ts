@@ -34,6 +34,7 @@ export const Routes = {
   },
   dashboard: {
     toString: () => "/dashboard" as const,
+    createEmployees: () => "/dashboard/employees/create" as const,
   },
   escapeGames: {
     toString: () => "/escape-games" as const,
