@@ -8,6 +8,7 @@ import {Routes as AppRoutes} from "@/components/core/Routes.tsx";
 import {useEscapeGames} from '@/hooks/useEscapeGames'
 import type {EscapeGame} from "@/mocks/types/mockApi.ts";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 type Status = 'Actif' | 'Maintenance' | 'Inactif';
 
@@ -82,6 +83,7 @@ const EscapegamesForm: React.FC = () => {
             navigate(AppRoutes.escapeGames.toString());
         } catch (error) {
             console.error('Erreur création escape game:', error);
+            toast.error("Une erreur est survenue lors de la création de l'escape game.");
         }
 
     };

@@ -4,6 +4,7 @@ import type {EscapeGame} from "@/mocks/types/mockApi.ts";
 import EscapeGameCard from "@/app/escapegames/EscapeGameCard.tsx";
 import {Link} from "@/components/core/Link";
 import { Routes as AppRoutes } from "@/lib/utils";
+import {toast} from "react-toastify";
 
 
 export default function EscapeGamesGrid(): ReactElement {
@@ -17,6 +18,7 @@ export default function EscapeGamesGrid(): ReactElement {
                 const data = await res.json();
                 setGames(data);
             } catch (err) {
+                toast.error("Erreur lors du chargement des jeux. Veuillez réessayer plus tard.");
                 console.error("Erreur lors du chargement des jeux :", err);
             } finally {
                 setLoading(false);

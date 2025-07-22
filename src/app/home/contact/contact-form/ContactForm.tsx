@@ -44,7 +44,8 @@ export default function ContactForm() {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du message')
+          toast.error( errorData.message || 'Une erreur est survenue lors de l\'envoi du message')
+        // throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du message')
       }
 
       const data = await response.json()

@@ -19,7 +19,8 @@ async function handleDeleteEmployee(employeeId: number) {
     })
     if (!response.ok) {
       const errorData = await response.json()
-      throw new Error(errorData.message || 'Une erreur est survenue lors de la suppression de l\'employé')
+      // throw new Error(errorData.message || 'Une erreur est survenue lors de la suppression de l\'employé')
+      toast.error( errorData.message || "Une erreur est survenue lors de la suppression de l'employé");
     }
     toast.success("Employé supprimé avec succès");
   } catch (error) {

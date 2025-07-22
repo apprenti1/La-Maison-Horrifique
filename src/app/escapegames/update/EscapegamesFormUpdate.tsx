@@ -8,6 +8,7 @@ import TextInput from "@/app/escapegames/create/TextInput.tsx";
 import SelectInput from "@/app/escapegames/create/SelectInput.tsx";
 import TextArea from "@/app/escapegames/create/TextArea.tsx";
 import NumberInput from "@/app/escapegames/create/NumberInput.tsx";
+import {toast} from "react-toastify";
 
 type Props = {
     escapeGame: EscapeGame;
@@ -72,6 +73,7 @@ const EscapegamesFormUpdate: React.FC<Props> = ({ escapeGame }) => {
             await updateEscapeGame(Number(updatedEscapeGame.id),updatedEscapeGame);
             navigate(AppRoutes.escapeGames.toString());
         } catch (error) {
+            toast.error('Erreur lors de la mise à jour de l\'escape game. Veuillez réessayer.');
             console.error('Erreur mise à jour escape game:', error);
         }
     };

@@ -59,7 +59,8 @@ export default function CreateEmployeePage() {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
+        // throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
+        toast.error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
       }
 
       await response.json()

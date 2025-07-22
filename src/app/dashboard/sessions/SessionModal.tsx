@@ -2,6 +2,7 @@
 import { useState, useEffect, type ReactElement } from 'react'
 import type { EscapeGame, Employee } from '@/mocks/types/mockApi'
 import { FuckingButton } from '@/components/core/Button'
+import { toast } from 'react-toastify'
 
 interface SessionModalProps {
   mode: 'create' | 'edit'
@@ -44,8 +45,11 @@ export default function SessionModal({
         if (response.ok) {
           const data = await response.json()
           setEmployees(data)
+        }else{
+          toast.error('Erreur lors du chargement des employés')
         }
       } catch (error) {
+        toast.error('Erreur lors du chargement des employés')
         console.error('Erreur lors du chargement des employés:', error)
       }
     }

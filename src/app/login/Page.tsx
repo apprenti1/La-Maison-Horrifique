@@ -44,8 +44,9 @@ export default function LoginPage() {
       })
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
+        const errorData = await response.json();
+        toast.error( errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
+        // throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
       }
 
       const data = await response.json()
@@ -54,6 +55,7 @@ export default function LoginPage() {
       toast.success("Connexion réussie !")
       navigate(Routes.dashboard.toString())
     } catch (error) {
+        toast.error( error instanceof Error ? error.message : 'Une erreur inconnue est survenue')
       if (error instanceof Error) {
         form.setError("email", { message: error.message })
         form.setError("password", { message: error.message })

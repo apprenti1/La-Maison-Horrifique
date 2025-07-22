@@ -7,6 +7,7 @@ import FloatingHorrorElements from "@/components/FloatingHorrorElements";
 import Navbar from "@/components/navbar/Navbar";
 import { FuckingButton } from "@/components/core/Button";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 async function getData(): Promise<EmployeeData[]> {
   const response = await fetch(`${API_URL}/employees`, {
@@ -18,7 +19,8 @@ async function getData(): Promise<EmployeeData[]> {
 
   if (!response.ok) {
     const errorData = await response.json()
-    throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
+    // throw new Error(errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
+    toast.error( errorData.message || 'Une erreur est survenue lors de l\'envoi du formulaire')
   }
 
   return await response.json()
