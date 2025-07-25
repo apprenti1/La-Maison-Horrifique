@@ -1,7 +1,7 @@
-// components/sessions/SessionsFilters.tsx
+
 import { type ReactElement } from 'react'
 
-// ✅ Types définis localement
+
 interface EscapeGame {
   id: string
   color: string

@@ -1,4 +1,4 @@
-// pages/sessions/SessionsManagementPage.tsx
+
 import { useState, type ReactElement } from 'react'
 import Navbar from '@/components/navbar/Navbar'
 import BackgroundEffects from '@/components/BackgroundEffects'
@@ -73,7 +73,7 @@ export default function SessionsManagementPage(): ReactElement {
     try {
       let additionalData = {}
       
-      // Si on passe en "Terminée", demander la durée réelle
+      
       if (newStatus === 'Terminée') {
         const dureeInput = prompt('Durée réelle de la session (en minutes) :')
         if (dureeInput) {
@@ -91,18 +91,18 @@ export default function SessionsManagementPage(): ReactElement {
     try {
       if (modalState.mode === 'create') {
         await createSession(sessionData)
-        toast.success('Session créée avec succès') // Ou alert si vous préférez
+        toast.success('Session créée avec succès') 
       } else {
         await updateSession(modalState.sessionData.id, sessionData)
         toast.success('Session modifiée avec succès')
       }
       
-      // ❌ SUPPRIMER CETTE LIGNE - Le modal se ferme maintenant tout seul
-      // setModalState({ isOpen: false, mode: 'create', sessionData: null })
+      
+      
       
     } catch (error) {
       toast.error(`Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
-      // Le modal reste ouvert en cas d'erreur pour permettre à l'utilisateur de corriger
+      
     }
   }
 

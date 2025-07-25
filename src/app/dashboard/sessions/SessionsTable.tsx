@@ -1,8 +1,8 @@
-// components/sessions/SessionsTable.tsx
+
 import { type ReactElement, useState } from 'react'
 import { FuckingButton } from '@/components/core/Button'
 
-// Types (gardez vos types existants)
+
 interface EscapeGame {
   id: string
   color: string
@@ -128,17 +128,17 @@ export default function SessionsTable({
     }
   }
 
-  // 🎯 FONCTION SIMPLE POUR COPIER LE LIEN
+  
   const copyPublicLink = async (sessionId: string) => {
     try {
       const publicUrl = `${window.location.origin}/dashboard/sessions/public/${sessionId}`
       await navigator.clipboard.writeText(publicUrl)
       
-      // Feedback visuel simple
+      
       setCopiedSessionId(sessionId)
       setTimeout(() => setCopiedSessionId(null), 2000)
       
-      // Optionnel: notification browser
+      
       if ('Notification' in window && Notification.permission === 'granted') {
         new Notification('Lien copié !', {
           body: 'Le lien de la session a été copié dans le presse-papier',
@@ -147,7 +147,7 @@ export default function SessionsTable({
       }
       
     } catch (error) {
-      // Fallback pour navigateurs anciens
+      
       const textArea = document.createElement('textarea')
       textArea.value = `${window.location.origin}/dashboard/sessions/public/${sessionId}`
       document.body.appendChild(textArea)
@@ -158,7 +158,7 @@ export default function SessionsTable({
       setCopiedSessionId(sessionId)
       setTimeout(() => setCopiedSessionId(null), 2000)
       
-      alert('Lien copié !') // Fallback notification
+      alert('Lien copié !') 
     }
   }
 

@@ -1,4 +1,4 @@
-// components/sessions/SessionModal.tsx
+
 import { useState, useEffect, type ReactElement } from 'react'
 import type { EscapeGame, Employee } from '@/mocks/types/mockApi'
 import { FuckingButton } from '@/components/core/Button'
@@ -36,9 +36,9 @@ export default function SessionModal({
   const [employees, setEmployees] = useState<Employee[]>([])
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<any>({})
-  const [hasClientInfo, setHasClientInfo] = useState(false) // Nouveau state
+  const [hasClientInfo, setHasClientInfo] = useState(false) 
 
-  // Charger les employés (Game Masters)
+  
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
@@ -58,11 +58,11 @@ export default function SessionModal({
     fetchEmployees()
   }, [])
 
-  // Pré-remplir le formulaire en mode édition
+  
   useEffect(() => {
     if (mode === 'edit' && sessionData) {
       const dateTime = new Date(sessionData.dateHeure)
-      const dateStr = dateTime.toISOString().slice(0, 16) // Format YYYY-MM-DDTHH:mm
+      const dateStr = dateTime.toISOString().slice(0, 16) 
 
       setFormData({
         escapeGameId: sessionData.escapeGameId,
@@ -77,7 +77,7 @@ export default function SessionModal({
         }
       })
 
-      // Détecter si on a des infos client
+      
       const hasClient = sessionData.clientInfo?.nom || sessionData.clientInfo?.email
       setHasClientInfo(!!hasClient)
     }
@@ -103,7 +103,7 @@ export default function SessionModal({
       }))
     }
 
-    // Clear error when user starts typing
+    
     if (errors[name]) {
       setErrors((prev: any) => ({
         ...prev,
@@ -115,7 +115,7 @@ export default function SessionModal({
   const validateForm = () => {
     const newErrors: any = {}
 
-    // Validation des champs obligatoires
+    
     if (!formData.escapeGameId) {
       newErrors.escapeGameId = 'Escape game requis'
     }
@@ -127,7 +127,7 @@ export default function SessionModal({
     if (!formData.dateHeure) {
       newErrors.dateHeure = 'Date et heure requises'
     } else {
-      // Vérifier que la date n'est pas dans le passé (sauf en mode édition)
+      
       const selectedDate = new Date(formData.dateHeure)
       const now = new Date()
       if (mode === 'create' && selectedDate < now) {
@@ -135,7 +135,7 @@ export default function SessionModal({
       }
     }
 
-    // Validation des champs client SEULEMENT si on a coché "Avec réservation client"
+    
     if (hasClientInfo) {
       if (!formData.clientInfo.nom.trim()) {
         newErrors['clientInfo.nom'] = 'Nom requis pour une réservation'
@@ -159,7 +159,7 @@ export default function SessionModal({
         newErrors['clientInfo.nombrePersonnes'] = 'Nombre de joueurs invalide (1-10)'
       }
 
-      // Vérifier les limites de l'escape game sélectionné
+      
       if (formData.escapeGameId) {
         const selectedGame = escapeGames.find(g => g.id === formData.escapeGameId)
         if (selectedGame) {
@@ -184,10 +184,10 @@ export default function SessionModal({
 
     setLoading(true)
     try {
-      // Calculer le prix total seulement si on a des infos client
+      
       const selectedGame = escapeGames.find(g => g.id === formData.escapeGameId)
       let prixTotal = 0
-      let statut = 'Disponible' // Par défaut pour les sessions sans client
+      let statut = 'Disponible' 
 
       if (hasClientInfo && selectedGame) {
         prixTotal = selectedGame.prix * formData.clientInfo.nombrePersonnes
@@ -198,14 +198,14 @@ export default function SessionModal({
         ...formData,
         dateHeure: new Date(formData.dateHeure).toISOString(),
         prixTotal,
-        statut: mode === 'create' ? statut : undefined, // Ne pas modifier le statut en édition
-        // Ne pas inclure clientInfo si pas de client
+        statut: mode === 'create' ? statut : undefined, 
+        
         clientInfo: hasClientInfo ? formData.clientInfo : null
       }
 
       await onSubmit(sessionData)
       
-      // Fermer le modal après succès
+      
       onClose()
       
     } catch (error) {

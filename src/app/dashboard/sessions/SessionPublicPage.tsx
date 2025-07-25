@@ -1,10 +1,10 @@
-// app/session/SessionPublicPage.tsx
+
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import BackgroundEffects from '@/components/BackgroundEffects'
 import FloatingHorrorElements from '@/components/FloatingHorrorElements'
 
-// Types pour TypeScript
+
 interface EscapeGame {
   id: string
   title: string
@@ -55,7 +55,7 @@ export default function SessionPublicPage() {
   useEffect(() => {
     if (!id) return
 
-    // Fetch vers votre API existante
+    
     fetch(`/api/sessions/${id}`)
       .then(res => res.ok ? res.json() : null)
       .then((data: Session | null) => {
