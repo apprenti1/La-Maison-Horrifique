@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export async function isAuthenticated() {
+export async function checkRole(role?: string) {
   const token = localStorage.getItem('token');
   if (!token) return false;
   const response = await fetch(`${API_URL}/verifyToken`, {
@@ -19,7 +19,22 @@ export async function isAuthenticated() {
     },
     body: JSON.stringify({ token }),
   });
-  return (response.ok && response.status === 200)
+  if (!response.ok || response.status !== 200) return false;
+  if (!role) return true;
+  const data = await response.json();
+  return data.user.role === role;
+}
+
+export async function isAuthenticated() {
+  return checkRole();
+}
+
+export async function isAdmin() {
+  return checkRole('admin');
+}
+
+export async function isEmployee() {
+  return checkRole('employee');
 }
 
 export const Routes = {

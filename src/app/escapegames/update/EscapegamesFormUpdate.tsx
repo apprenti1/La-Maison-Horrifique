@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "@/components/core/Link";
-import { Routes as AppRoutes } from "@/components/core/Routes.tsx";
+import { Routes } from "@/lib/utils";
 import { useEscapeGames } from '@/hooks/useEscapeGames';
 import type { EscapeGame } from "@/mocks/types/mockApi";
 import { useNavigate } from "react-router-dom";
@@ -71,7 +71,7 @@ const EscapegamesFormUpdate: React.FC<Props> = ({ escapeGame }) => {
 
         try {
             await updateEscapeGame(Number(updatedEscapeGame.id),updatedEscapeGame);
-            navigate(AppRoutes.escapeGames.toString());
+            navigate(Routes.escapeGames.toString());
         } catch (error) {
             toast.error('Erreur lors de la mise à jour de l\'escape game. Veuillez réessayer.');
             console.error('Erreur mise à jour escape game:', error);
@@ -191,7 +191,7 @@ const EscapegamesFormUpdate: React.FC<Props> = ({ escapeGame }) => {
 
             <div className="flex justify-end space-x-4">
                 <Link
-                    path={AppRoutes.escapeGames.toString()}
+                    path={Routes.escapeGames.toString()}
                     text="Annuler"
                     className="bg-gray-600 hover:bg-gray-500 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
                 />

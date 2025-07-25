@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./app/home/Page";
 import LoginPage from "./app/login/Page";
-import {PrivateRoute, PublicRoute} from "./components/core/Routes";
+import {AdminRoute, PrivateRoute, PublicRoute} from "./components/core/Routes";
 import DashboardPage from "./app/dashboard/Page";
 import LogoutPage from "./app/logout/Page";
 import SessionsManagementPage from "./app/dashboard/sessions/SessionsManagementPage";
@@ -52,54 +52,54 @@ export default function App() {
       <Route
         path={AppRoutes.dashboard.employees.toString()}
         element={
-          <PrivateRoute>
+          <AdminRoute>
             <EmployeesPage />
-          </PrivateRoute>
+          </AdminRoute>
         }
       />
       <Route
         path={AppRoutes.escapeGames.toString()}
         element={
-          <PrivateRoute>
+          <AdminRoute>
             {/* Placeholder for Escape Games Page */}
             <EscapeGamesPage></EscapeGamesPage>
-          </PrivateRoute>
+          </AdminRoute>
         }
       />
       <Route
         path={AppRoutes.escapeGame.toString(':id')}
         element={
-          <PrivateRoute>
+          <AdminRoute>
             {/* Placeholder for Escape Game Page */}
             <div>Escape Game Page</div>
-          </PrivateRoute>
+          </AdminRoute>
         }
       />
       <Route
         path={AppRoutes.escapeGameCreate.toString()}
         element={
-          <PrivateRoute>
+          <AdminRoute>
             {/* Placeholder for Create Escape Game Page */}
             <EscapeGamesCreatePage></EscapeGamesCreatePage>
-          </PrivateRoute>
+          </AdminRoute>
         }
       />
       <Route
         path={AppRoutes.escapeGameEdit.toString(':id')}
         element={
-          <PrivateRoute>
+          <AdminRoute>
             {/* Placeholder for Edit Escape Game Page */}
             <div>Edit Escape Game Page</div>
-          </PrivateRoute>
+          </AdminRoute>
         }
       />
       <Route
         path={AppRoutes.escapeGameDelete.toString(':id')}
         element={
-          <PrivateRoute>
+          <AdminRoute>
             {/* Placeholder for Delete Escape Game Page */}
             <div>Delete Escape Game Page</div>
-          </PrivateRoute>
+          </AdminRoute>
         }
       />
       <Route

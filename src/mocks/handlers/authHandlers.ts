@@ -15,7 +15,7 @@ export const authHandlers = [
 
     if (email === 'admin@admin.io' && password === 'Azerty1234!') {
       return HttpResponse.json({
-        token: 'fake-jwt-token',
+        token: 'fake-jwt-token-admin',
         user: {
           id: 'admin-1',
           email: 'admin@admin.io',
@@ -27,24 +27,12 @@ export const authHandlers = [
 
     if (email === 'employee@employee.io' && password === 'Azerty1234!') {
       return HttpResponse.json({
-        token: 'fake-jwt-token',
+        token: 'fake-jwt-token-employee',
         user: {
           id: 'employee-1',
           email: 'employee@employee.io',
           name: 'Employé',
           role: 'employee'
-        }
-      }, { status: 200 })
-    }
-
-    if (email === 'user@user.io' && password === 'Azerty1234!') {
-      return HttpResponse.json({
-        token: 'fake-jwt-token',
-        user: {
-          id: 'user-1',
-          email: 'user@user.io',
-          name: 'Utilisateur',
-          role: 'user'
         }
       }, { status: 200 })
     }
@@ -65,7 +53,7 @@ export const authHandlers = [
       }, { status: 400 })
     }
 
-    if (token === 'fake-jwt-token') {
+    if (token === 'fake-jwt-token-admin') {
       return HttpResponse.json({
         message: 'Token valide',
         user: {
@@ -73,6 +61,18 @@ export const authHandlers = [
           email: 'admin@admin.io',
           name: 'Administrateur',
           role: 'admin'
+        }
+      }, { status: 200 })
+    }
+
+    if (token === 'fake-jwt-token-employee') {
+      return HttpResponse.json({
+        message: 'Token valide',
+        user: {
+          id: 'employee-1',
+          email: 'employee@employee.io',
+          name: 'Employé',
+          role: 'employee'
         }
       }, { status: 200 })
     }
