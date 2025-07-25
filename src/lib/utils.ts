@@ -42,6 +42,9 @@ export const Routes = {
     },
     sessions: {
       toString: () => "/dashboard/sessions" as const,
+      public: {
+        toString: () => "/dashboard/sessions/public/:id" as const,
+      },
       planning: {
         toString: () => "/dashboard/sessions/planning" as const,
       },

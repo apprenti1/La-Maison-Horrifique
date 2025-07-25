@@ -1,5 +1,6 @@
 import LinkNavbar from "@/components/navbar/Linknavebar";
 import icon from "@/assets/maison-hantee.png";
+import ThemeToggle from "@/components/navbar/ThemeToggle";
 import { Link } from "@/components/core/Link";
 import { Routes } from "@/lib/utils";
 
@@ -17,6 +18,9 @@ export default function Navbar() {
                             La Maison Horrifique
                         </h2>
                     </Link>
+                    
+                    {/* Theme Toggle */}
+                    <ThemeToggle className="ml-4" />
 
                     {/* Navigation Links */}
                     <LinkNavbar />

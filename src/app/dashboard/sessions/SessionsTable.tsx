@@ -1,8 +1,8 @@
 // components/sessions/SessionsTable.tsx
-import { type ReactElement } from 'react'
+import { type ReactElement, useState } from 'react'
 import { FuckingButton } from '@/components/core/Button'
 
-// ✅ Types définis localement pour éviter les problèmes d'import
+// Types (gardez vos types existants)
 interface EscapeGame {
   id: string
   color: string
@@ -74,6 +74,8 @@ export default function SessionsTable({
   onStatusChange 
 }: SessionsTableProps): ReactElement {
   
+  const [copiedSessionId, setCopiedSessionId] = useState<string | null>(null)
+  
   const formatDate = (dateTime: string) => {
     const date = new Date(dateTime)
     return date.toLocaleDateString('fr-FR', {
@@ -120,6 +122,34 @@ export default function SessionsTable({
       case 'Réservée': return ['En cours', 'Annulée']
       case 'En cours': return ['Terminée', 'Annulée']
       default: return []
+    }
+  }
+
+  // 🎯 FONCTION SIMPLE POUR COPIER LE LIEN
+  const copyPublicLink = async (sessionId: string) => {
+    try {
+      // Pour React Router, on génère le lien complet
+      const publicUrl = `${window.location.origin}/dashboard/sessions/public/${sessionId}`
+      await navigator.clipboard.writeText(publicUrl)
+      
+      // Feedback visuel
+      setCopiedSessionId(sessionId)
+      setTimeout(() => setCopiedSessionId(null), 2000)
+      
+      // Notification simple
+      console.log('Lien copié:', publicUrl)
+      
+    } catch (error) {
+      // Fallback pour navigateurs anciens
+      const textArea = document.createElement('textarea')
+      textArea.value = `${window.location.origin}/dashboard/sessions/public/${sessionId}`
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      
+      setCopiedSessionId(sessionId)
+      setTimeout(() => setCopiedSessionId(null), 2000)
     }
   }
 
@@ -229,6 +259,19 @@ export default function SessionsTable({
                 {/* Actions */}
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end gap-2">
+                    
+                    {/* 🎯 BOUTON SIMPLE POUR COPIER LE LIEN PUBLIC */}
+                    <FuckingButton
+                      variant="secondary"
+                      color={copiedSessionId === session.id ? "green" : "purple"}
+                      size="sm"
+                      onClick={() => copyPublicLink(session.id)}
+                      title="Copier le lien public de la session"
+                      className="min-w-0 px-2 relative"
+                    >
+                      {copiedSessionId === session.id ? '✅' : '🔗'}
+                    </FuckingButton>
+
                     {/* Changer statut */}
                     {canChangeStatus(session.statut) && (
                       <div className="relative group">
@@ -242,13 +285,13 @@ export default function SessionsTable({
                         </FuckingButton>
                         <div className="absolute right-0 top-8 hidden group-hover:block bg-gray-800 border border-gray-700 rounded shadow-lg py-1 z-10">
                           {getNextStatuses(session.statut).map(status => (
-                            <FuckingButton
+                            <button
                               key={status}
                               onClick={() => onStatusChange(session.id, status)}
                               className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white w-full text-left"
                             >
                               → {status}
-                            </FuckingButton>
+                            </button>
                           ))}
                         </div>
                       </div>
@@ -283,7 +326,7 @@ export default function SessionsTable({
         </table>
       </div>
 
-      {/* Légende des statuts */}
+      {/* Légende simple */}
       <div className="bg-gray-800/50 px-6 py-3 border-t border-gray-700">
         <div className="flex flex-wrap gap-4 text-xs">
           <div className="flex items-center gap-2">
@@ -301,6 +344,9 @@ export default function SessionsTable({
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <span className="text-gray-400">Annulée</span>
+          </div>
+          <div className="ml-auto text-gray-500">
+            🔗 Cliquer pour copier le lien public
           </div>
         </div>
       </div>

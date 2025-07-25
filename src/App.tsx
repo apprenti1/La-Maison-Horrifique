@@ -12,6 +12,7 @@ import {Routes as AppRoutes} from "./lib/utils";
 import LegalNoticesPage from "./app/legal-notices/page";
 import CreateEmployeePage from "./app/dashboard/employees/create-employee/page";
 import EmployeesPage from "@/app/dashboard/employees/page.tsx";
+import SessionPublicPage from "@/app/dashboard/sessions/SessionPublicPage.tsx";
 
 export default function App() {
   return (
@@ -125,6 +126,10 @@ export default function App() {
       <Route
         path="*"
         element={<Navigate to={AppRoutes.home.toString()} replace />}
+      />
+      <Route
+        path={AppRoutes.dashboard.sessions.public.toString()}
+        element={<SessionPublicPage />}
       />
     </Routes>
   );
