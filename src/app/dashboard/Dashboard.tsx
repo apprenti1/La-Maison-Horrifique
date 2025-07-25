@@ -1,7 +1,7 @@
-import { type ReactElement } from "react"
+import { useEffect, useState } from "react"
 import StatCard from './StatCard'
 import ManagementCard from './ManagementCard'
-import { Routes } from "@/lib/utils"
+import { isEmployee, Routes } from "@/lib/utils"
 
 interface StatData {
   title: string
@@ -32,7 +32,6 @@ interface ManagementCardData {
   secondaryAction?: Omit<ActionButton, 'color'>
 }
 
-export default function Dashboard(): ReactElement {
   // Stats data
   const statsData: StatData[] = [
     { title: "Escape Games", value: "4", icon: "🏚️", iconBgColor: "bg-blue-600" },
@@ -84,6 +83,20 @@ export default function Dashboard(): ReactElement {
     }
   ]
 
+export default function Dashboard() {
+  const [visibleCards, setVisibleCards] = useState<ManagementCardData[]>([]);
+
+  useEffect(() => {
+    const checkUserRole = async () => {
+      if (await isEmployee()) {
+        setVisibleCards(managementCards.filter(card => card.title === "Sessions"));
+      } else {
+        setVisibleCards(managementCards);
+      }
+    };
+    checkUserRole();
+  }, []);
+
   return (
     <div className="relative mt-16 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
@@ -107,16 +120,16 @@ export default function Dashboard(): ReactElement {
 
       {/* Management Cards */}
       <div className="grid lg:grid-cols-3 gap-8 mb-8">
-        {managementCards.map((card: ManagementCardData, index: number) => (
+        {visibleCards.map((card: ManagementCardData, index: number) => (
           <ManagementCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            icon={card.icon}
-            iconColor={card.iconColor}
-            stats={card.stats}
-            primaryAction={card.primaryAction}
-            secondaryAction={card.secondaryAction}
+        key={index}
+        title={card.title}
+        description={card.description}
+        icon={card.icon}
+        iconColor={card.iconColor}
+        stats={card.stats}
+        primaryAction={card.primaryAction}
+        secondaryAction={card.secondaryAction}
           />
         ))}
       </div>
