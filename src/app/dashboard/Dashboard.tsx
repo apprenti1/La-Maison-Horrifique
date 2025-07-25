@@ -98,7 +98,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="relative mt-16 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="relative mt-16 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col justify-center items-center">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-white mb-2 text-shadow-horror">Tableau de Bord</h1>
@@ -119,7 +119,7 @@ export default function Dashboard() {
       </div>
 
       {/* Management Cards */}
-      <div className="grid lg:grid-cols-3 gap-8 mb-8">
+      <div className="w-fit gap-8 mb-8">
         {visibleCards.map((card: ManagementCardData, index: number) => (
           <ManagementCard
         key={index}
