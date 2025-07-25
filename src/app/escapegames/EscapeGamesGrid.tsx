@@ -3,7 +3,7 @@ import type {ReactElement} from "react";
 import type {EscapeGame} from "@/mocks/types/mockApi.ts";
 import EscapeGameCard from "@/app/escapegames/EscapeGameCard.tsx";
 import {Link} from "@/components/core/Link";
-import { Routes as AppRoutes } from "@/lib/utils";
+import { Routes } from "@/lib/utils";
 import {toast} from "react-toastify";
 
 
@@ -34,7 +34,7 @@ export default function EscapeGamesGrid(): ReactElement {
 
     return (
         <div className="m-3 mt-20 relative z-50 display flex flex-col items-center justify-center">
-        <Link path={AppRoutes.escapeGameCreate.toString()}
+        <Link path={Routes.escapeGameCreate.toString()}
                 className="bg-red-800 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors duration-300 flex items-center space-x-2 w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,5 +65,5 @@ export default function EscapeGamesGrid(): ReactElement {
             ))}
         </div>
         </div>
-    ) as React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
+    ) as React.ReactElement<unknown, string | React.JSXElementConstructor<unknown>>;
 }

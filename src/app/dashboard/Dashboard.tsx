@@ -119,7 +119,7 @@ export default function Dashboard() {
       </div>
 
       {/* Management Cards */}
-      <div className="w-fit gap-8 mb-8">
+      <div className="grid lg:grid-cols-3 gap-8 mb-8">
         {visibleCards.map((card: ManagementCardData, index: number) => (
           <ManagementCard
         key={index}
