@@ -4,9 +4,52 @@ import { useParams } from 'react-router-dom'
 import BackgroundEffects from '@/components/BackgroundEffects'
 import FloatingHorrorElements from '@/components/FloatingHorrorElements'
 
+// Types pour TypeScript
+interface EscapeGame {
+  id: string
+  title: string
+  description: string
+  icon: string
+  duration: string
+  level: string
+  theme: string
+  note: number
+}
+
+interface Employee {
+  id: string
+  nom: string
+  prenom: string
+  poste: string
+}
+
+interface ClientInfo {
+  nom: string
+  prenom: string
+  email: string
+  telephone: string
+  nombrePersonnes: number
+}
+
+interface Session {
+  id: string
+  escapeGameId: string
+  employeeId: string
+  clientInfo: ClientInfo | null
+  dateHeure: string
+  statut: string
+  prixTotal: number
+  dureeReelle?: number
+  notes?: string
+  createdAt: string
+  updatedAt: string
+  escapeGame?: EscapeGame
+  employee?: Employee
+}
+
 export default function SessionPublicPage() {
   const { id } = useParams()
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -15,7 +58,7 @@ export default function SessionPublicPage() {
     // Fetch vers votre API existante
     fetch(`/api/sessions/${id}`)
       .then(res => res.ok ? res.json() : null)
-      .then(data => {
+      .then((data: Session | null) => {
         setSession(data)
         setLoading(false)
       })
@@ -50,7 +93,7 @@ export default function SessionPublicPage() {
     )
   }
 
-  const formatDate = (dateTime) => {
+  const formatDate = (dateTime: string) => {
     return new Date(dateTime).toLocaleDateString('fr-FR', {
       weekday: 'long',
       day: 'numeric',
@@ -61,8 +104,9 @@ export default function SessionPublicPage() {
     })
   }
 
-  const getStatusColor = (statut) => {
+  const getStatusColor = (statut: string) => {
     switch (statut) {
+      case 'Disponible': return 'text-blue-300 bg-blue-800/20'
       case 'Réservée': return 'text-blue-400 bg-blue-900/20'
       case 'En cours': return 'text-green-400 bg-green-900/20'
       case 'Terminée': return 'text-gray-400 bg-gray-900/20'
@@ -137,21 +181,29 @@ export default function SessionPublicPage() {
               <div>
                 <span className="text-gray-400 block">Réservé par</span>
                 <span className="text-white font-semibold">
-                  {session.clientInfo?.prenom} {session.clientInfo?.nom}
+                  {session.clientInfo 
+                    ? `${session.clientInfo.prenom} ${session.clientInfo.nom}`
+                    : <span className="text-gray-400 italic">Session disponible</span>
+                  }
                 </span>
               </div>
               <div>
                 <span className="text-gray-400 block">Nombre de joueurs</span>
                 <span className="text-white font-semibold">
-                  {session.clientInfo?.nombrePersonnes} personne{session.clientInfo?.nombrePersonnes > 1 ? 's' : ''}
+                  {session.clientInfo && session.clientInfo.nombrePersonnes
+                    ? `${session.clientInfo.nombrePersonnes} personne${session.clientInfo.nombrePersonnes > 1 ? 's' : ''}`
+                    : <span className="text-gray-400">À définir</span>
+                  }
                 </span>
               </div>
-              <div>
-                <span className="text-gray-400 block">Contact</span>
-                <span className="text-white font-semibold">
-                  {session.clientInfo?.email}
-                </span>
-              </div>
+              {session.clientInfo?.email && (
+                <div>
+                  <span className="text-gray-400 block">Contact</span>
+                  <span className="text-white font-semibold">
+                    {session.clientInfo.email}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>

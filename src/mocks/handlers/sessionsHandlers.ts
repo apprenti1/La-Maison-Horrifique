@@ -1,5 +1,3 @@
-
-
 import { http, HttpResponse } from 'msw'
 import { API_URL } from '@/lib/utils'
 import type { Session, EnrichedSession } from '../types/mockApi'
@@ -39,7 +37,6 @@ export const sessionsHandlers = [
       )
     }
 
-
     const enrichedSessions: EnrichedSession[] = filteredSessions.map(session => {
       const escapeGame = escapeGames.find(eg => eg.id === session.escapeGameId)
       const employee = employees.find(emp => emp.id === session.employeeId)
@@ -54,8 +51,8 @@ export const sessionsHandlers = [
     return HttpResponse.json(enrichedSessions, { status: 200 })
   }),
 
-
   http.get(`${API_URL}/sessions/:id`, ({ params }) => {
+    
     const session = sessions.find(s => s.id === params.id)
     if (!session) {
       return HttpResponse.json({
@@ -76,34 +73,33 @@ export const sessionsHandlers = [
     return HttpResponse.json(enrichedSession, { status: 200 })
   }),
 
-
   http.post(`${API_URL}/sessions`, async ({ request }) => {
     const newSession = await request.json() as Omit<Session, 'id' | 'createdAt' | 'updatedAt'>
     
-
+    
     if (!newSession.escapeGameId || !newSession.employeeId || !newSession.dateHeure) {
       return HttpResponse.json({
-        message: 'Escape create, employé et date/heure sont requis',
+        message: 'Escape game, employé et date/heure sont requis',
         error: 'Bad Request'
       }, { status: 400 })
     }
 
-
+    
     const escapeGame = escapeGames.find(eg => eg.id === newSession.escapeGameId)
     if (!escapeGame) {
       return HttpResponse.json({
-        message: 'Escape create non trouvé',
+        message: 'Escape game non trouvé',
         error: 'Bad Request'
       }, { status: 400 })
     }
     if (escapeGame.statut !== 'Actif') {
       return HttpResponse.json({
-        message: 'Escape create non disponible',
+        message: 'Escape game non disponible',
         error: 'Bad Request'
       }, { status: 400 })
     }
 
-
+    
     const employee = employees.find(emp => emp.id === newSession.employeeId)
     if (!employee) {
       return HttpResponse.json({
@@ -118,7 +114,7 @@ export const sessionsHandlers = [
       }, { status: 400 })
     }
 
-
+    
     const conflictingSessions = sessions.filter(s => 
       s.employeeId === newSession.employeeId &&
       s.statut !== 'Annulée' &&
@@ -132,18 +128,20 @@ export const sessionsHandlers = [
       }, { status: 409 })
     }
 
-
-    if (newSession.clientInfo.nombrePersonnes > escapeGame.maxPlayers) {
-      return HttpResponse.json({
-        message: `Nombre de joueurs trop élevé (max: ${escapeGame.maxPlayers})`,
-        error: 'Bad Request'
-      }, { status: 400 })
-    }
-    if (newSession.clientInfo.nombrePersonnes < escapeGame.minPlayers) {
-      return HttpResponse.json({
-        message: `Nombre de joueurs insuffisant (min: ${escapeGame.minPlayers})`,
-        error: 'Bad Request'
-      }, { status: 400 })
+    
+    if (newSession.clientInfo && newSession.clientInfo.nombrePersonnes) {
+      if (newSession.clientInfo.nombrePersonnes > escapeGame.maxPlayers) {
+        return HttpResponse.json({
+          message: `Nombre de joueurs trop élevé (max: ${escapeGame.maxPlayers})`,
+          error: 'Bad Request'
+        }, { status: 400 })
+      }
+      if (newSession.clientInfo.nombrePersonnes < escapeGame.minPlayers) {
+        return HttpResponse.json({
+          message: `Nombre de joueurs insuffisant (min: ${escapeGame.minPlayers})`,
+          error: 'Bad Request'
+        }, { status: 400 })
+      }
     }
     
     const session: Session = {
@@ -153,10 +151,13 @@ export const sessionsHandlers = [
       updatedAt: new Date().toISOString()
     }
     
+    
     sessions.push(session)
+    
+    console.log('✅ Session ajoutée:', { id: session.id, statut: session.statut })
+    
     return HttpResponse.json(session, { status: 201 })
   }),
-
 
   http.put(`${API_URL}/sessions/:id`, async ({ params, request }) => {
     const index = sessions.findIndex(s => s.id === params.id)
@@ -169,10 +170,28 @@ export const sessionsHandlers = [
 
     const updates = await request.json() as Partial<Session>
     
-
+    
     if (updates.escapeGameId || updates.employeeId || updates.dateHeure) {
+      
+    }
+
     
-    
+    if (updates.clientInfo && updates.clientInfo.nombrePersonnes) {
+      const escapeGame = escapeGames.find(eg => eg.id === (updates.escapeGameId || sessions[index].escapeGameId))
+      if (escapeGame) {
+        if (updates.clientInfo.nombrePersonnes > escapeGame.maxPlayers) {
+          return HttpResponse.json({
+            message: `Nombre de joueurs trop élevé (max: ${escapeGame.maxPlayers})`,
+            error: 'Bad Request'
+          }, { status: 400 })
+        }
+        if (updates.clientInfo.nombrePersonnes < escapeGame.minPlayers) {
+          return HttpResponse.json({
+            message: `Nombre de joueurs insuffisant (min: ${escapeGame.minPlayers})`,
+            error: 'Bad Request'
+          }, { status: 400 })
+        }
+      }
     }
 
     sessions[index] = {
@@ -184,7 +203,6 @@ export const sessionsHandlers = [
     return HttpResponse.json(sessions[index], { status: 200 })
   }),
 
-
   http.delete(`${API_URL}/sessions/:id`, ({ params }) => {
     const index = sessions.findIndex(s => s.id === params.id)
     if (index === -1) {
@@ -194,7 +212,7 @@ export const sessionsHandlers = [
       }, { status: 404 })
     }
 
-
+    
     if (['En cours', 'Terminée'].includes(sessions[index].statut)) {
       return HttpResponse.json({
         message: 'Impossible de supprimer une session en cours ou terminée',
@@ -207,7 +225,6 @@ export const sessionsHandlers = [
       message: 'Session supprimée avec succès' 
     }, { status: 200 })
   }),
-
 
   http.patch(`${API_URL}/sessions/:id/status`, async ({ params, request }) => {
     const index = sessions.findIndex(s => s.id === params.id)
@@ -224,7 +241,7 @@ export const sessionsHandlers = [
       dureeReelle?: number
     }
     
-    if (!['Réservée', 'En cours', 'Terminée', 'Annulée'].includes(statut)) {
+    if (!['Réservée', 'En cours', 'Terminée', 'Annulée', 'Disponible'].includes(statut)) {
       return HttpResponse.json({
         message: 'Statut invalide',
         error: 'Bad Request'
@@ -237,7 +254,7 @@ export const sessionsHandlers = [
       updatedAt: new Date().toISOString()
     }
 
-
+    
     if (statut === 'Terminée') {
       if (notes) updatedSession.notes = notes
       if (dureeReelle) updatedSession.dureeReelle = dureeReelle
@@ -247,7 +264,6 @@ export const sessionsHandlers = [
     
     return HttpResponse.json(sessions[index], { status: 200 })
   }),
-
 
   http.get(`${API_URL}/sessions/availability/:escapeGameId`, ({ params, request }) => {
     const url = new URL(request.url)
@@ -263,14 +279,14 @@ export const sessionsHandlers = [
 
     const requestedDateTime = `${date}T${time}:00Z`
     
-
+    
     const conflictingSession = sessions.find(s => 
       s.escapeGameId === params.escapeGameId &&
       s.dateHeure === requestedDateTime &&
       s.statut !== 'Annulée'
     )
 
-
+    
     const availableEmployees = employees.filter(emp => 
       emp.poste === 'Game Master' && 
       emp.statut === 'Actif' &&

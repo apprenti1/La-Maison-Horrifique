@@ -9,6 +9,7 @@ import { useEscapeGames } from '@/hooks/useEscapeGames'
 import SessionsTable from './SessionsTable'
 import SessionModal from './SessionModal'
 import SessionsFilters from './SessionsFilters'
+import { toast } from 'react-toastify'
 
 export default function SessionsManagementPage(): ReactElement {
   const [filters, setFilters] = useState({
@@ -90,15 +91,18 @@ export default function SessionsManagementPage(): ReactElement {
     try {
       if (modalState.mode === 'create') {
         await createSession(sessionData)
-        alert('Session créée avec succès')
+        toast.success('Session créée avec succès') // Ou alert si vous préférez
       } else {
         await updateSession(modalState.sessionData.id, sessionData)
-        alert('Session modifiée avec succès')
+        toast.success('Session modifiée avec succès')
       }
       
-      setModalState({ isOpen: false, mode: 'create', sessionData: null })
+      // ❌ SUPPRIMER CETTE LIGNE - Le modal se ferme maintenant tout seul
+      // setModalState({ isOpen: false, mode: 'create', sessionData: null })
+      
     } catch (error) {
-      alert(`Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
+      toast.error(`Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`)
+      // Le modal reste ouvert en cas d'erreur pour permettre à l'utilisateur de corriger
     }
   }
 

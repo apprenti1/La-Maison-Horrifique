@@ -95,6 +95,7 @@ export default function SessionsTable({
 
   const getStatusColor = (statut: string) => {
     switch (statut) {
+      case 'Disponible': return 'text-blue-300'
       case 'Réservée': return 'text-blue-400'
       case 'En cours': return 'text-green-400'
       case 'Terminée': return 'text-gray-400'
@@ -105,6 +106,7 @@ export default function SessionsTable({
 
   const getStatusBg = (statut: string) => {
     switch (statut) {
+      case 'Disponible': return 'bg-blue-800/20 border-blue-400/30'
       case 'Réservée': return 'bg-blue-900/20 border-blue-500/30'
       case 'En cours': return 'bg-green-900/20 border-green-500/30'
       case 'Terminée': return 'bg-gray-900/20 border-gray-500/30'
@@ -119,6 +121,7 @@ export default function SessionsTable({
 
   const getNextStatuses = (currentStatus: string) => {
     switch (currentStatus) {
+      case 'Disponible': return ['Réservée', 'Annulée']
       case 'Réservée': return ['En cours', 'Annulée']
       case 'En cours': return ['Terminée', 'Annulée']
       default: return []
@@ -128,16 +131,20 @@ export default function SessionsTable({
   // 🎯 FONCTION SIMPLE POUR COPIER LE LIEN
   const copyPublicLink = async (sessionId: string) => {
     try {
-      // Pour React Router, on génère le lien complet
       const publicUrl = `${window.location.origin}/dashboard/sessions/public/${sessionId}`
       await navigator.clipboard.writeText(publicUrl)
       
-      // Feedback visuel
+      // Feedback visuel simple
       setCopiedSessionId(sessionId)
       setTimeout(() => setCopiedSessionId(null), 2000)
       
-      // Notification simple
-      console.log('Lien copié:', publicUrl)
+      // Optionnel: notification browser
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('Lien copié !', {
+          body: 'Le lien de la session a été copié dans le presse-papier',
+          icon: '🔗'
+        })
+      }
       
     } catch (error) {
       // Fallback pour navigateurs anciens
@@ -150,6 +157,8 @@ export default function SessionsTable({
       
       setCopiedSessionId(sessionId)
       setTimeout(() => setCopiedSessionId(null), 2000)
+      
+      alert('Lien copié !') // Fallback notification
     }
   }
 
@@ -216,24 +225,38 @@ export default function SessionsTable({
                 {/* Client */}
                 <td className="px-6 py-4">
                   <div className="text-sm text-white">
-                    {session.clientInfo.prenom} {session.clientInfo.nom}
+                    {session.clientInfo 
+                      ? `${session.clientInfo.prenom} ${session.clientInfo.nom}`
+                      : <span className="text-gray-400 italic">Disponible</span>
+                    }
                   </div>
                 </td>
 
                 {/* Contact */}
                 <td className="px-6 py-4">
-                  <div className="text-sm text-gray-300">
-                    {session.clientInfo.email}
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    {session.clientInfo.telephone}
-                  </div>
+                  {session.clientInfo ? (
+                    <>
+                      <div className="text-sm text-gray-300">
+                        {session.clientInfo.email}
+                      </div>
+                      <div className="text-sm text-gray-400">
+                        {session.clientInfo.telephone}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-sm text-gray-400 italic">
+                      Pas de réservation
+                    </div>
+                  )}
                 </td>
 
                 {/* Joueurs */}
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-white">
-                    {session.clientInfo.nombrePersonnes} joueur{session.clientInfo.nombrePersonnes > 1 ? 's' : ''}
+                    {session.clientInfo && session.clientInfo.nombrePersonnes
+                      ? `${session.clientInfo.nombrePersonnes} joueur${session.clientInfo.nombrePersonnes > 1 ? 's' : ''}`
+                      : <span className="text-gray-400">-</span>
+                    }
                   </div>
                 </td>
 
@@ -266,7 +289,6 @@ export default function SessionsTable({
                       color={copiedSessionId === session.id ? "green" : "purple"}
                       size="sm"
                       onClick={() => copyPublicLink(session.id)}
-                      title="Copier le lien public de la session"
                       className="min-w-0 px-2 relative"
                     >
                       {copiedSessionId === session.id ? '✅' : '🔗'}
@@ -308,7 +330,7 @@ export default function SessionsTable({
                     </FuckingButton>
 
                     {/* Supprimer */}
-                    {['Réservée', 'Annulée'].includes(session.statut) && (
+                    {['Disponible', 'Réservée', 'Annulée'].includes(session.statut) && (
                       <FuckingButton
                         variant="secondary"
                         color="red"
@@ -329,6 +351,10 @@ export default function SessionsTable({
       {/* Légende simple */}
       <div className="bg-gray-800/50 px-6 py-3 border-t border-gray-700">
         <div className="flex flex-wrap gap-4 text-xs">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-blue-400"></div>
+            <span className="text-gray-400">Disponible</span>
+          </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-blue-500"></div>
             <span className="text-gray-400">Réservée</span>
